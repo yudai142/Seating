@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">座席表アプリ</string>
+    <string name="private_room">個室</string>
+    <string name="table_seat">机</string>
+</resources>
