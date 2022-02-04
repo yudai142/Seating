@@ -8,10 +8,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_vector_1" />
@@ -20,17 +19,252 @@
         android:id="@+id/seat_button_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:translationX="80dp"
         android:text="Button 1"
         app:layout_constraintLeft_toLeftOf="@+id/imageView"
-        app:layout_constraintRight_toRightOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <Button
         android:id="@+id/seat_button_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/seat_button_1"
-        android:text="Button 2" />
+        android:layout_marginTop="50dp"
+        android:translationX="80dp"
+        android:text="Button 2"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:translationX="80dp"
+        android:text="Button 3"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:translationX="80dp"
+        android:text="Button 4"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:translationX="80dp"
+        android:text="Button 5"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:translationX="80dp"
+        android:text="Button 6"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:translationX="80dp"
+        android:text="Button 7"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:translationX="220dp"
+        android:text="Button 8"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:translationX="380dp"
+        android:text="Button 9"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:translationX="220dp"
+        android:text="Button 10"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:translationX="380dp"
+        android:text="Button 11"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:translationX="380dp"
+        android:text="Button 12"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:translationX="540dp"
+        android:text="Button 13"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:translationX="380dp"
+        android:text="Button 14"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:translationX="540dp"
+        android:text="Button 15"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:translationX="220dp"
+        android:text="Button 16"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:translationX="380dp"
+        android:text="Button 17"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:translationX="220dp"
+        android:text="Button 18"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:translationX="380dp"
+        android:text="Button 19"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:translationX="380dp"
+        android:text="Button 20"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:translationX="540dp"
+        android:text="Button 21"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:translationX="380dp"
+        android:text="Button 22"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/seat_button_23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:translationX="540dp"
+        android:text="Button 23"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
