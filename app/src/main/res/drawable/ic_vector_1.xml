@@ -8,8 +8,18 @@
         android:fillAlpha="0"
         android:fillColor="#000"
         android:pathData="
-            M151,1h-150v450h150
-            M1,51h150"
+            M151,1 h-150 v351 h150
+            M1,51  h150
+            M1,101 h150
+            M1,151 h150
+            M1,201 h150
+            M1,251 h150
+            M1,301 h150
+            M300,1   l50,50 -50,50 -50,-50z
+            M450,101 l50,50 -50,50 -50,-50z
+            M300,201 l50,50 -50,50 -50,-50z
+            M450,301 l50,50 -50,50 -50,-50z
+        "
         android:strokeWidth="1"
         android:strokeColor="#000" />
 </vector>
