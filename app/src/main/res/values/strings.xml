@@ -1,5 +1,31 @@
 <resources>
     <string name="app_name">座席表アプリ</string>
+    <string name="button_1">Button 1</string>
+    <string name="button_2">Button 2</string>
+    <string name="button_3">Button 3</string>
+    <string name="button_4">Button 4</string>
+    <string name="button_5">Button 5</string>
+    <string name="button_6">Button 6</string>
+    <string name="button_7">Button 7</string>
+    <string name="button_8">Button 8</string>
+    <string name="button_9">Button 9</string>
+    <string name="button_10">Button 10</string>
+    <string name="button_11">Button 11</string>
+    <string name="button_12">Button 12</string>
+    <string name="button_13">Button 13</string>
+    <string name="button_14">Button 14</string>
+    <string name="button_15">Button 15</string>
+    <string name="button_16">Button 16</string>
+    <string name="button_17">Button 17</string>
+    <string name="button_18">Button 18</string>
+    <string name="button_19">Button 19</string>
+    <string name="button_20">Button 20</string>
+    <string name="button_21">Button 21</string>
+    <string name="button_22">Button 22</string>
+    <string name="button_23">Button 23</string>
+    <string name="button_24">Button 24</string>
+    <string name="button_25">Button 25</string>
+    <string name="button_26">Button 26</string>
     <string name="private_room">個室</string>
     <string name="table_seat">机</string>
 </resources>

@@ -1,25 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="500dp"
-    android:height="500dp"
-    android:viewportWidth="500"
-    android:viewportHeight="500">
+    android:width="1000dp"
+    android:height="1000dp"
+    android:viewportWidth="600"
+    android:viewportHeight="600">
     <path
         android:fillAlpha="0"
-        android:fillColor="#000"
-        android:pathData="
-            M151,1 h-150 v351 h150
-            M1,51  h150
-            M1,101 h150
-            M1,151 h150
-            M1,201 h150
-            M1,251 h150
-            M1,301 h150
-            M300,1   l50,50 -50,50 -50,-50z
-            M450,101 l50,50 -50,50 -50,-50z
-            M300,201 l50,50 -50,50 -50,-50z
-            M450,301 l50,50 -50,50 -50,-50z
-        "
+        android:fillColor="@color/black"
         android:strokeWidth="1"
-        android:strokeColor="#000" />
+        android:strokeColor="@color/black"
+        android:pathData="M10,10 10,450 70,510 10,510 10,590 490,590 490,130 410,130 410,70 350,70 350,10 200,10 200,30 150,30 150,10z" />
+
+    <path
+        android:fillAlpha="0"
+        android:fillColor="@color/black"
+        android:strokeWidth="1"
+        android:strokeColor="@color/black"
+        android:pathData="
+            M230,30 230,50 310,50 310,30z
+            M310,370 310,430 330,430 330,370z
+            M50,430 50,470 90,470 90,430z
+            M430,270 430,190 410,190 410,270z
+            " />
+
+    <path
+        android:fillAlpha="0"
+        android:fillColor="@color/black"
+        android:strokeWidth="1"
+        android:strokeColor="@color/black"
+        android:pathData="
+            M170,510 170,590
+            M230,510 350,510 350,590
+            M350,350 350,450 490,450
+            M350,190 350,290 490,290
+            M50,10 50,120
+            M350,130 490,130
+            M10,120 100,120
+            M10,160 100,160
+            M10,200 100,200
+            M10,240 100,240
+            M10,280 100,280
+            M10,320 100,320
+            M10,360 100,360
+            M10,400 100,400
+            " />
+<!--    <path-->
+<!--        android:fillAlpha="0"-->
+<!--        android:fillColor="#000"-->
+<!--        android:pathData="-->
+<!--            M151,1 h-150 v351 h150-->
+<!--            M1,51  h150-->
+<!--            M1,101 h150-->
+<!--            M1,151 h150-->
+<!--            M1,201 h150-->
+<!--            M1,251 h150-->
+<!--            M1,301 h150-->
+<!--        "-->
+<!--        android:strokeWidth="1"-->
+<!--        android:strokeColor="#000" />-->
 </vector>

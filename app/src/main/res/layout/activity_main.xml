@@ -6,46 +6,60 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- 間取り -->
+    <ImageView
+        android:contentDescription="@null"
+        android:id="@+id/roomImageView"
+        android:layout_width="1000dp"
+        android:layout_height="1000dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_vector_1" />
+
     <!-- 机 1 -->
     <ImageView
+        android:contentDescription="@null"
         android:id="@+id/tableSeatImageView_1"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginLeft="400dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="200dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_vector_2" />
 
     <!-- 机 2 -->
     <ImageView
+        android:contentDescription="@null"
         android:id="@+id/tableSeatImageView_2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginStart="400dp"
+        android:layout_marginTop="350dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_vector_2" />
 
     <!-- 机 3 -->
     <ImageView
+        android:contentDescription="@null"
         android:id="@+id/tableSeatImageView_3"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="500dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_vector_2" />
 
     <!-- 机 4 -->
     <ImageView
+        android:contentDescription="@null"
         android:id="@+id/tableSeatImageView_4"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="650dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_vector_2" />
@@ -53,10 +67,10 @@
     <!-- 個室 -->
     <TextView
         android:id="@+id/privateRoomTextView"
-        android:layout_width="140dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="160dp"
         android:text="@string/private_room"
         android:textAlignment="center"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -111,8 +125,8 @@
         android:id="@+id/seatButton_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Button 1"
+        android:layout_marginTop="50dp"
+        android:text="@string/button_1"
         app:layout_constraintLeft_toLeftOf="@+id/privateRoomTextView"
         app:layout_constraintTop_toTopOf="@+id/privateRoomTextView"
         app:layout_constraintRight_toRightOf="@+id/privateRoomTextView"/>
@@ -122,8 +136,8 @@
         android:id="@+id/seatButton_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Button 2"
+        android:layout_marginTop="65dp"
+        android:text="@string/button_2"
         app:layout_constraintLeft_toLeftOf="@+id/seatButton_1"
         app:layout_constraintTop_toTopOf="@+id/seatButton_1"
         app:layout_constraintRight_toRightOf="@+id/seatButton_1" />
@@ -133,8 +147,8 @@
         android:id="@+id/seatButton_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Button 3"
+        android:layout_marginTop="65dp"
+        android:text="@string/button_3"
         app:layout_constraintLeft_toLeftOf="@+id/seatButton_2"
         app:layout_constraintTop_toTopOf="@+id/seatButton_2"
         app:layout_constraintRight_toRightOf="@+id/seatButton_2" />
@@ -144,8 +158,8 @@
         android:id="@+id/seatButton_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Button 4"
+        android:layout_marginTop="65dp"
+        android:text="@string/button_4"
         app:layout_constraintLeft_toLeftOf="@+id/seatButton_3"
         app:layout_constraintTop_toTopOf="@+id/seatButton_3"
         app:layout_constraintRight_toRightOf="@+id/seatButton_3" />
@@ -155,8 +169,8 @@
         android:id="@+id/seatButton_5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Button 5"
+        android:layout_marginTop="65dp"
+        android:text="@string/button_5"
         app:layout_constraintLeft_toLeftOf="@+id/seatButton_4"
         app:layout_constraintTop_toTopOf="@+id/seatButton_4"
         app:layout_constraintRight_toRightOf="@+id/seatButton_4" />
@@ -166,8 +180,8 @@
         android:id="@+id/seatButton_6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Button 6"
+        android:layout_marginTop="65dp"
+        android:text="@string/button_6"
         app:layout_constraintLeft_toLeftOf="@+id/seatButton_5"
         app:layout_constraintTop_toTopOf="@+id/seatButton_5"
         app:layout_constraintRight_toRightOf="@+id/seatButton_5" />
@@ -177,8 +191,8 @@
         android:id="@+id/seatButton_7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Button 7"
+        android:layout_marginTop="65dp"
+        android:text="@string/button_7"
         app:layout_constraintLeft_toLeftOf="@+id/seatButton_6"
         app:layout_constraintTop_toTopOf="@+id/seatButton_6"
         app:layout_constraintRight_toRightOf="@+id/seatButton_6" />
@@ -188,9 +202,9 @@
         android:id="@+id/seat_button_8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="60dp"
-        android:text="Button 8"
+        android:text="@string/button_8"
         app:layout_constraintRight_toRightOf="@+id/tableSeatImageView_1"
         app:layout_constraintBottom_toBottomOf="@+id/tableSeatImageView_1" />
 
@@ -199,9 +213,9 @@
         android:id="@+id/seat_button_9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
         android:layout_marginBottom="60dp"
-        android:text="Button 9"
+        android:text="@string/button_9"
         app:layout_constraintLeft_toLeftOf="@+id/tableSeatImageView_1"
         app:layout_constraintBottom_toBottomOf="@+id/tableSeatImageView_1" />
 
@@ -210,9 +224,9 @@
         android:id="@+id/seat_button_10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginTop="60dp"
-        android:text="Button 10"
+        android:text="@string/button_10"
         app:layout_constraintRight_toRightOf="@+id/tableSeatImageView_1"
         app:layout_constraintTop_toTopOf="@+id/tableSeatImageView_1" />
 
@@ -221,9 +235,9 @@
         android:id="@+id/seat_button_11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
-        android:text="Button 11"
+        android:text="@string/button_11"
         app:layout_constraintLeft_toLeftOf="@+id/tableSeatImageView_1"
         app:layout_constraintTop_toTopOf="@+id/tableSeatImageView_1" />
 
@@ -232,9 +246,9 @@
         android:id="@+id/seatButton_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="60dp"
-        android:text="Button 12"
+        android:text="@string/button_12"
         app:layout_constraintRight_toRightOf="@+id/tableSeatImageView_2"
         app:layout_constraintBottom_toBottomOf="@+id/tableSeatImageView_2" />
 
@@ -243,9 +257,9 @@
         android:id="@+id/seatButton_13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
         android:layout_marginBottom="60dp"
-        android:text="Button 13"
+        android:text="@string/button_13"
         app:layout_constraintLeft_toLeftOf="@+id/tableSeatImageView_2"
         app:layout_constraintBottom_toBottomOf="@+id/tableSeatImageView_2" />
 
@@ -254,9 +268,9 @@
         android:id="@+id/seatButton_14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginTop="60dp"
-        android:text="Button 14"
+        android:text="@string/button_14"
         app:layout_constraintRight_toRightOf="@+id/tableSeatImageView_2"
         app:layout_constraintTop_toTopOf="@+id/tableSeatImageView_2" />
 
@@ -265,9 +279,9 @@
         android:id="@+id/seatButton_15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
-        android:text="Button 15"
+        android:text="@string/button_15"
         app:layout_constraintLeft_toLeftOf="@+id/tableSeatImageView_2"
         app:layout_constraintTop_toTopOf="@+id/tableSeatImageView_2" />
 
@@ -276,9 +290,9 @@
         android:id="@+id/seatButton_16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="60dp"
-        android:text="Button 16"
+        android:text="@string/button_16"
         app:layout_constraintRight_toRightOf="@+id/tableSeatImageView_3"
         app:layout_constraintBottom_toBottomOf="@+id/tableSeatImageView_3" />
 
@@ -287,9 +301,9 @@
         android:id="@+id/seatButton_17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
         android:layout_marginBottom="60dp"
-        android:text="Button 17"
+        android:text="@string/button_17"
         app:layout_constraintLeft_toLeftOf="@+id/tableSeatImageView_3"
         app:layout_constraintBottom_toBottomOf="@+id/tableSeatImageView_3" />
 
@@ -298,9 +312,9 @@
         android:id="@+id/seatButton_18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginTop="60dp"
-        android:text="Button 18"
+        android:text="@string/button_18"
         app:layout_constraintRight_toRightOf="@+id/tableSeatImageView_3"
         app:layout_constraintTop_toTopOf="@+id/tableSeatImageView_3" />
 
@@ -309,9 +323,9 @@
         android:id="@+id/seatButton_19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
-        android:text="Button 19"
+        android:text="@string/button_19"
         app:layout_constraintLeft_toLeftOf="@+id/tableSeatImageView_3"
         app:layout_constraintTop_toTopOf="@+id/tableSeatImageView_3" />
 
@@ -320,9 +334,9 @@
         android:id="@+id/seatButton_20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="60dp"
-        android:text="Button 20"
+        android:text="@string/button_20"
         app:layout_constraintRight_toRightOf="@+id/tableSeatImageView_4"
         app:layout_constraintBottom_toBottomOf="@+id/tableSeatImageView_4" />
 
@@ -331,9 +345,9 @@
         android:id="@+id/seatButton_21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
         android:layout_marginBottom="60dp"
-        android:text="Button 21"
+        android:text="@string/button_21"
         app:layout_constraintLeft_toLeftOf="@+id/tableSeatImageView_4"
         app:layout_constraintBottom_toBottomOf="@+id/tableSeatImageView_4" />
 
@@ -342,9 +356,9 @@
         android:id="@+id/seatButton_22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginTop="60dp"
-        android:text="Button 22"
+        android:text="@string/button_22"
         app:layout_constraintRight_toRightOf="@+id/tableSeatImageView_4"
         app:layout_constraintTop_toTopOf="@+id/tableSeatImageView_4" />
 
@@ -353,9 +367,9 @@
         android:id="@+id/seatButton_23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
-        android:text="Button 23"
+        android:text="@string/button_23"
         app:layout_constraintLeft_toLeftOf="@+id/tableSeatImageView_4"
         app:layout_constraintTop_toTopOf="@+id/tableSeatImageView_4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
