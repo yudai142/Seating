@@ -5,7 +5,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setMessage(Program.formatString("%d", Program.getSeatIndex(view)));
         dialog.setTitle("Title");
@@ -31,11 +34,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d("Debug", "Main Activity: On Create.");
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo info) {
+        super.onCreateContextMenu(menu, view, info);
+    }
+
     // Options Menu を表示する場合は true を返す.
     // そうでない場合は false を返す.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
     }
 
     @Override
@@ -45,8 +55,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-        return super.onOptionsItemSelected(menuItem);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.options_menu:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -77,5 +92,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStop() {
         super.onStop();
         Log.d("Debug", "Main Activity: On Stop.");
+    }
+
+    private void showAlert(Exception exception) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setMessage(exception.getMessage());
+        dialog.setTitle(getResources().getString(R.string.error));
+        dialog.show();
     }
 }

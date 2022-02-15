@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<users xmlns:app="http://schemas.android.com/apk/res-auto">
+    <user id="1" name="@string/demo_user_name_1" />
+</users>
