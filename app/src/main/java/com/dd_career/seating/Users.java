@@ -44,6 +44,11 @@ public final class Users {
     }
 
     @NonNull
+    public final User get(int index) {
+        return users.get(index);
+    }
+
+    @NonNull
     public final int[] getIds() {
         int[] ids = new int[users.size()];
         int index = 0;

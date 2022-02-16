@@ -1,11 +1,7 @@
 package com.dd_career.seating;
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,12 +11,37 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Locale;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class MainActivity extends AppCompatActivity {
+// アプリケーションのメイン エントリ ポイント.
+public class MainActivity extends AppCompatActivity {
+    private Seats seats;
     private Users users;
 
-    private final void loadUsers() {
+    // 着座する利用者を選択する.
+    private void chooseUser(View view) {
+        Seat seat = seats.findSeatByView(view);
+
+        if (seat != null) {
+            Resources resources = getResources();
+            AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            dialog.setTitle(resources.getString(R.string.seat_in));
+            dialog.setNegativeButton(resources.getString(R.string.cancel), null);
+            dialog.setItems(users.getNames(), (dialogInterface, index) -> {
+                seat.setUser(users.get(index));
+            });
+            dialog.show();
+        }
+    }
+
+    private void loadSeats() {
+        seats = new Seats();
+        for (int index = 1; index <= 23; index++) {
+            seats.add(new Seat(index, (Button)findViewById(Program.getSeatViewId(index))));
+        }
+    }
+
+    private void loadUsers() {
         try {
             users = Users.createDemo(getResources());
         }
@@ -29,29 +50,13 @@ public final class MainActivity extends AppCompatActivity {
         }
     }
 
-    public final void onClick(View view) {
-        //int selected = 0;
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        //dialog.setMessage(users.getNames()[0].toString());
-        //dialog.setMessage(Program.formatString("%d", Program.getSeatIndex(view)));
-        dialog.setItems(users.getNames(), (dialogInterface, index) -> {
-
-        });
-//        dialog.setPositiveButton(getResources().getString(R.string.accept), (dialogInterface, i) -> {
-//
-//        });
-        dialog.setNegativeButton(getResources().getString(R.string.cancel), (dialogInterface, i) -> {
-
-        });
-        dialog.setTitle(getResources().getString(R.string.seat_in));
-        dialog.show();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loadSeats();
         loadUsers();
+        seats.update();
     }
 
     @Override
@@ -98,6 +103,10 @@ public final class MainActivity extends AppCompatActivity {
         super.onResume();
     }
 
+    public void onSeatButtonClick(View view) {
+        chooseUser(view);
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -108,7 +117,8 @@ public final class MainActivity extends AppCompatActivity {
         super.onStop();
     }
 
-    private final void showAlert(Exception exception) {
+    // 指定した例外を説明するダイアログを表示する.
+    private void showAlert(Exception exception) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setMessage(exception.getMessage());
         dialog.setTitle(getResources().getString(R.string.error));

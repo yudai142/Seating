@@ -56,10 +56,9 @@
     <string name="button_49">Button 49</string>
     <string name="button_50">Button 50</string>
     <string name="cancel">キャンセル</string>
-    <string name="company">企業</string>
-    <string name="company_name">ディー キャリア IT エキスパート京橋オフィス</string>
     <string name="copyright">Copyright © 2022 Taichi Murakami.</string>
     <string name="demo_user_name_1">H. 水素</string>
+    <string name="empty_seat">(空席)</string>
     <string name="error">エラー</string>
     <string name="help">ヘルプ</string>
     <string name="list">一覧</string>
@@ -70,6 +69,7 @@
     <string name="private_room">個室</string>
     <string name="records">履歴</string>
     <string name="reset">リセット</string>
+    <string name="seat_button_text_format">%d: %s</string>
     <string name="seat_in">着席</string>
     <string name="seat_out">離席</string>
     <string name="settings">設定</string>

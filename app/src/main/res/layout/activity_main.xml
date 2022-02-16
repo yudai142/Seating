@@ -148,7 +148,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="@string/button_1"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/private_room_text_view"
         app:layout_constraintTop_toTopOf="@+id/private_room_text_view"
         app:layout_constraintRight_toRightOf="@+id/private_room_text_view" />
@@ -160,7 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
         android:text="@string/button_2"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/seat_button_1"
         app:layout_constraintTop_toTopOf="@+id/seat_button_1"
         app:layout_constraintRight_toRightOf="@+id/seat_button_1" />
@@ -172,7 +172,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
         android:text="@string/button_3"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/seat_button_2"
         app:layout_constraintTop_toTopOf="@+id/seat_button_2"
         app:layout_constraintRight_toRightOf="@+id/seat_button_2" />
@@ -184,7 +184,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
         android:text="@string/button_4"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/seat_button_3"
         app:layout_constraintTop_toTopOf="@+id/seat_button_3"
         app:layout_constraintRight_toRightOf="@+id/seat_button_3" />
@@ -196,7 +196,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
         android:text="@string/button_5"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/seat_button_4"
         app:layout_constraintTop_toTopOf="@+id/seat_button_4"
         app:layout_constraintRight_toRightOf="@+id/seat_button_4" />
@@ -208,7 +208,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
         android:text="@string/button_6"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/seat_button_5"
         app:layout_constraintTop_toTopOf="@+id/seat_button_5"
         app:layout_constraintRight_toRightOf="@+id/seat_button_5" />
@@ -220,7 +220,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
         android:text="@string/button_7"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/seat_button_6"
         app:layout_constraintTop_toTopOf="@+id/seat_button_6"
         app:layout_constraintRight_toRightOf="@+id/seat_button_6" />
@@ -233,7 +233,7 @@
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="60dp"
         android:text="@string/button_8"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_1"
         app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_1" />
 
@@ -245,7 +245,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginBottom="60dp"
         android:text="@string/button_9"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_1"
         app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_1" />
 
@@ -257,7 +257,7 @@
         android:layout_marginEnd="60dp"
         android:layout_marginTop="60dp"
         android:text="@string/button_10"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_1"
         app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_1" />
 
@@ -269,7 +269,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
         android:text="@string/button_11"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_1"
         app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_1" />
 
@@ -281,7 +281,7 @@
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="60dp"
         android:text="@string/button_12"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_2"
         app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_2" />
 
@@ -293,7 +293,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginBottom="60dp"
         android:text="@string/button_13"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_2"
         app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_2" />
 
@@ -305,7 +305,7 @@
         android:layout_marginEnd="60dp"
         android:layout_marginTop="60dp"
         android:text="@string/button_14"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_2"
         app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_2" />
 
@@ -317,7 +317,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
         android:text="@string/button_15"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_2"
         app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_2" />
 
@@ -329,7 +329,7 @@
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="60dp"
         android:text="@string/button_16"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_3"
         app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_3" />
 
@@ -341,7 +341,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginBottom="60dp"
         android:text="@string/button_17"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_3"
         app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_3" />
 
@@ -353,7 +353,7 @@
         android:layout_marginEnd="60dp"
         android:layout_marginTop="60dp"
         android:text="@string/button_18"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_3"
         app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_3" />
 
@@ -365,7 +365,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
         android:text="@string/button_19"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_3"
         app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_3" />
 
@@ -377,7 +377,7 @@
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="60dp"
         android:text="@string/button_20"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_4"
         app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_4" />
 
@@ -389,7 +389,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginBottom="60dp"
         android:text="@string/button_21"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_4"
         app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_4" />
 
@@ -401,7 +401,7 @@
         android:layout_marginEnd="60dp"
         android:layout_marginTop="60dp"
         android:text="@string/button_22"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_4"
         app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_4" />
 
@@ -413,7 +413,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="60dp"
         android:text="@string/button_23"
-        android:onClick="onClick"
+        android:onClick="onSeatButtonClick"
         app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_4"
         app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
