@@ -5,7 +5,7 @@ import android.view.View;
 
 import java.util.Locale;
 
-public class Program {
+public final class Program {
     private static final Locale LOCALE = Locale.JAPANESE;
 
     private Program() {

@@ -1,4 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<users xmlns:app="http://schemas.android.com/apk/res-auto">
-    <user id="1" name="@string/demo_user_name_1" />
+<!-- 動作確認用利用者名簿 -->
+<users>
+    <user id="1" name="H. 水素" />
+    <user id="2" name="He. ヘリウム" />
+    <user id="3" name="Li. リチウム" />
+    <user id="4" name="Be. ベリリウム" />
+    <user id="5" name="B. ホウ素" />
+    <user id="6" name="C. 炭素" />
+    <user id="7" name="N. 窒素" />
+    <user id="8" name="O. 酸素" />
+    <user id="9" name="F. フッ素" />
+    <user id="10" name="Ne. ネオン" />
+    <user id="11" name="Na. ナトリウム" />
+    <user id="12" name="Mg. マグネシウム" />
+    <user id="13" name="Al. アルミニウム" />
+    <user id="14" name="Si. ケイ素" />
+    <user id="15" name="P. リン" />
+    <user id="16" name="S. 硫黄" />
+    <user id="17" name="Cl. 塩素" />
+    <user id="18" name="Ar. アルゴン" />
+    <user id="19" name="K. カリウム" />
+    <user id="20" name="Ca. カルシウム" />
+    <user id="21" name="Sc. スカンジウム" />
+    <user id="22" name="Ti. チタン" />
+    <user id="23" name="V. バナジウム" />
+    <user id="24" name="Cr. クロム" />
+    <user id="25" name="Mn. マンガン" />
+    <user id="26" name="Fe. 鉄" />
+    <user id="27" name="Co. コバルト" />
+    <user id="28" name="Ni. ニッケル" />
+    <user id="29" name="Cu. 銅" />
+    <user id="30" name="Zn. 亜鉛" />
+    <user id="31" name="Ga. ガリウム" />
+    <user id="32" name="Ge. ゲルマニウム" />
+    <user id="33" name="As. ヒ素" />
+    <user id="34" name="Se. セレン" />
+    <user id="35" name="Br. 臭素" />
+    <user id="36" name="Kr. クリプトン" />
+    <user id="37" name="Rb. ルビジウム" />
+    <user id="38" name="Sr. ストロンチウム" />
+    <user id="39" name="Y. イットリウム" />
+    <user id="40" name="Zr. ジルコニウム" />
+    <user id="41" name="Nb. ニオブ" />
+    <user id="42" name="Mo. モリブデン" />
+    <user id="43" name="Tc. テクネチウム" />
+    <user id="44" name="Ru. ルテニウム" />
+    <user id="45" name="Rh. ロジウム" />
+    <user id="46" name="Pd. パラジウム" />
+    <user id="47" name="Ag. 銀" />
+    <user id="48" name="Cd. カドミウム" />
+    <user id="49" name="In. インジウム" />
+    <user id="50" name="Sn. スズ" />
+    <user id="51" name="Sb. アンチモン" />
+    <user id="52" name="Te. テルル" />
+    <user id="53" name="I. ヨウ素" />
+    <user id="54" name="Xe. キセノン" />
+    <user id="55" name="Cs. セシウム" />
+    <user id="56" name="Ba. バリウム" />
+    <user id="57" name="La. ランタン" />
+    <user id="58" name="Ce. セリウム" />
+    <user id="59" name="Pr. プラセオジム" />
+    <user id="60" name="Nd. ネオジム" />
+    <user id="61" name="Pm. プロメチウム" />
+    <user id="62" name="Sm. サマリウム" />
+    <user id="63" name="Eu. ヨウロピウム" />
+    <user id="64" name="Gd. ガドリニウム" />
+    <user id="65" name="Tb. テルビウム" />
 </users>

@@ -1,6 +1,7 @@
 package com.dd_career.seating;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -16,14 +17,33 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public final class MainActivity extends AppCompatActivity {
+    private Users users;
 
-    @Override
-    public void onClick(View view) {
+    private final void loadUsers() {
+        try {
+            users = Users.createDemo(getResources());
+        }
+        catch (Exception exception) {
+            showAlert(exception);
+        }
+    }
 
+    public final void onClick(View view) {
+        //int selected = 0;
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setMessage(Program.formatString("%d", Program.getSeatIndex(view)));
-        dialog.setTitle("Title");
+        //dialog.setMessage(users.getNames()[0].toString());
+        //dialog.setMessage(Program.formatString("%d", Program.getSeatIndex(view)));
+        dialog.setItems(users.getNames(), (dialogInterface, index) -> {
+
+        });
+//        dialog.setPositiveButton(getResources().getString(R.string.accept), (dialogInterface, i) -> {
+//
+//        });
+        dialog.setNegativeButton(getResources().getString(R.string.cancel), (dialogInterface, i) -> {
+
+        });
+        dialog.setTitle(getResources().getString(R.string.seat_in));
         dialog.show();
     }
 
@@ -31,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("Debug", "Main Activity: On Create.");
+        loadUsers();
     }
 
     @Override
@@ -51,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d("Debug", "Main Activity: On Destroy.");
     }
 
     @Override
@@ -67,34 +86,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("Debug", "Main Activity: On Pause.");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d("Debug", "Main Activity: On Restart.");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("Debug", "Main Activity: On Resume.");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("Debug", "Main Activity: On Start.");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("Debug", "Main Activity: On Stop.");
     }
 
-    private void showAlert(Exception exception) {
+    private final void showAlert(Exception exception) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setMessage(exception.getMessage());
         dialog.setTitle(getResources().getString(R.string.error));
