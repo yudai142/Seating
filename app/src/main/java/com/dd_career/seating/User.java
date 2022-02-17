@@ -2,77 +2,115 @@ package com.dd_career.seating;
 
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 // 利用者情報を格納する.
-public final class User {
-    public static final String ID_ATTRIBUTE_NAME = "id";
-    public static final String NAME_ATTRIBUTE_NAME = "name";
+public class User {
+    public static final String ELEMENT = "user";
+    public static final String FORMAT = "User_%s_%d";
+    public static final String ID = "id";
+    public static final String NAME = "name";
     public static final String NAMESPACE = null;
-    public static final String ELEMENT_NAME = "user";
+    public static final String SEAT = "seat";
+    public static final String VISIBLE = "visible";
 
     // 利用者一意識別子.
-    private int id;
-
-    // 最新着座時刻.
-    private Date latestSeatIn;
-
-    // 最新離席時刻.
-    private Date latestSeatOut;
+    private int id = 0;
 
     // 利用者名.
-    private String name;
-
-    // 着座した場合は ture. 離席した場合は false.
-    private boolean onSeat;
+    private String name = null;
 
     // 着座した座席番号またはゼロ.
-    private int seat;
+    private int seat = 0;
 
     // 着座可能である場合は true. 着席不能である場合は false.
-    private boolean visible;
+    private boolean visible = true;
 
     public User() {
-        this.visible = true;
     }
 
     public User(XmlResourceParser parser) {
-        this.id = Integer.parseInt(parser.getAttributeValue(NAMESPACE, ID_ATTRIBUTE_NAME));
-        this.name = parser.getAttributeValue(NAMESPACE, NAME_ATTRIBUTE_NAME);
+        load(parser);
     }
 
-    public final int getId() {
+    public User(int index, Bundle input) {
+        load(index, input);
+    }
+
+    public int getId() {
         return this.id;
     }
 
-    public final String getName() {
+    private static String getIdKey(int index) {
+        return getKey(index, ID);
+    }
+
+    private static String getKey(int index, String name) {
+        return Program.formatString(FORMAT, name, index);
+    }
+
+    public String getName() {
         return this.name;
     }
 
-    public final boolean getOnSeat() {
-        return this.onSeat;
+    private static String getNameKey(int index) {
+        return getKey(index, NAME);
     }
 
-    public final boolean getVisible() {
+    public int getSeat() {
+        return this.seat;
+    }
+
+    private static String getSeatKey(int index) {
+        return getKey(index, SEAT);
+    }
+
+    public boolean getVisible() {
         return this.visible;
     }
 
-    public final void setId(int id) {
+    private static String getVisibleKey(int index) {
+        return getKey(index, VISIBLE);
+    }
+
+    public void load(XmlResourceParser parser) {
+        id = Integer.parseInt(parser.getAttributeValue(NAMESPACE, ID));
+        name = parser.getAttributeValue(NAMESPACE, NAME);
+        seat = 0;
+        visible = true;
+    }
+
+    public void load(int index, Bundle input) {
+        id = input.getInt(getIdKey(index));
+        name = input.getString(getNameKey(index));
+        seat = input.getInt(getSeatKey(index));
+        visible = input.getBoolean(getVisibleKey(index));
+    }
+
+    public void save(int index, Bundle output) {
+        output.putInt(getIdKey(index), getId());
+        output.putString(getNameKey(index), getName());
+        output.putInt(getSeatKey(index), getSeat());
+        output.putBoolean(getVisibleKey(index), getVisible());
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
-    public final void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public final void setOnSeat(boolean onSeat) {
-        this.onSeat = onSeat;
+    public void setSeat(int seat) {
+        this.seat = seat;
     }
 
-    public final void setVisible(boolean visible) {
+    public void setVisible(boolean visible) {
         this.visible = visible;
     }
 }

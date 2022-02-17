@@ -32,6 +32,10 @@ public class Seat {
         return this.user;
     }
 
+    public boolean isEmpty() {
+        return user == null;
+    }
+
     public void setUser(User user) {
         this.user = user;
         update();
@@ -40,7 +44,19 @@ public class Seat {
     private void update() {
         if (button != null) {
             Resources resources = button.getResources();
-            String name = (user != null) ? user.getName() : resources.getString(R.string.empty_seat);
+            int color;
+            String name;
+
+            if (user != null) {
+                color = resources.getColor(R.color.used_seat);
+                name = user.getName();
+            }
+            else {
+                color = resources.getColor(R.color.empty_seat);
+                name = resources.getString(R.string.empty_seat);
+            }
+
+            button.setBackgroundColor(color);
             button.setText(String.format(resources.getString(R.string.seat_button_text_format), index, name));
         }
     }

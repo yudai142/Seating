@@ -7,10 +7,9 @@ import java.util.List;
 
 // 座席のコレクションを格納する.
 public class Seats {
-    private List<Seat> seats;
+    private List<Seat> seats = new ArrayList<>();
 
     public Seats() {
-        this.seats = new ArrayList<>();
     }
 
     public void add(Seat seat) {

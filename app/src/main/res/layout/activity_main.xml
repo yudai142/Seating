@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <!-- 間取り -->
+
     <ImageView
         android:id="@+id/room_image_view"
         android:contentDescription="@null"
@@ -23,7 +24,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="300dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_vector_2" />
@@ -35,7 +36,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="400dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="300dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_vector_2" />
@@ -47,7 +48,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="300dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="450dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_vector_2" />
@@ -59,7 +60,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="300dp"
-        android:layout_marginTop="650dp"
+        android:layout_marginTop="600dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_vector_2" />
@@ -70,7 +71,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="100dp"
         android:text="@string/private_room"
         android:textAlignment="center"
         app:layout_constraintLeft_toLeftOf="parent"

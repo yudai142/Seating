@@ -2,6 +2,7 @@ package com.dd_career.seating;
 
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
@@ -9,47 +10,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 // 利用者情報使用方法を提供する.
-public final class Users {
-    @NonNull
-    private List<User> users;
+public class Users {
+    public static final String SIZE = "Users_size";
+    private List<User> users = new ArrayList<>();
 
     public Users() {
-        this.users = new ArrayList<>();
     }
 
-    public final void add(User user) {
-        this.users.add(user);
+    public void add(User user) {
+        users.add(user);
     }
 
-    @NonNull
-    public static Users createDemo(Resources resources) throws Exception {
-        Users self = new Users();
+    public void clear() {
+        users.clear();
+    }
 
-        try (XmlResourceParser parser = resources.getXml(R.xml.demo_users)) {
-            while (parser.getEventType() != XmlResourceParser.END_DOCUMENT) {
-                if ((parser.getEventType() == XmlResourceParser.START_TAG) && (parser.getName().equals(User.ELEMENT_NAME))) {
-                    self.add(new User(parser));
-                }
-
-                parser.next();
+    public User findUserById(int id) {
+        for (User user : users) {
+            if ((user != null) && (user.getId() == id)) {
+                return user;
             }
         }
 
-        return self;
+        return null;
     }
 
-    @NonNull
-    public final List<User> get() {
+    public List<User> get() {
         return users;
     }
 
-    @NonNull
-    public final User get(int index) {
+    public User get(int index) {
         return users.get(index);
     }
 
-    @NonNull
-    public final int[] getIds() {
+    public int[] getIds() {
         int[] ids = new int[users.size()];
         int index = 0;
 
@@ -60,8 +54,7 @@ public final class Users {
         return ids;
     }
 
-    @NonNull
-    public final String[] getNames() {
+    public String[] getNames() {
         String[] names = new String[users.size()];
         int index = 0;
 
@@ -70,6 +63,35 @@ public final class Users {
         }
 
         return names;
+    }
+
+    public void load(Bundle input) {
+        int count = input.getInt(SIZE);
+
+        for (int index = 0; index < count; index++) {
+            users.add(new User(index, input));
+        }
+    }
+
+    public void loadDemo(Resources resources) throws Exception {
+        try (XmlResourceParser parser = resources.getXml(R.xml.demo_users)) {
+            while (parser.getEventType() != XmlResourceParser.END_DOCUMENT) {
+                if ((parser.getEventType() == XmlResourceParser.START_TAG) && (parser.getName().equals(User.ELEMENT))) {
+                    users.add(new User(parser));
+                }
+
+                parser.next();
+            }
+        }
+    }
+
+    public void save(Bundle output) {
+        int count = users.size();
+        output.putInt(SIZE, count);
+
+        for (int index = 0; index < count; index++) {
+            users.get(index).save(index, output);
+        }
     }
 
     public int size() {
