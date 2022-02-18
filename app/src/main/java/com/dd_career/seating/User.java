@@ -19,26 +19,23 @@ public class User {
     public static final String VISIBLE = "visible";
 
     // 利用者一意識別子.
-    private int id = 0;
+    private int id;
 
     // 利用者名.
-    private String name = null;
+    private String name;
 
-    // 着座した座席番号またはゼロ.
-    private int seat = 0;
+    // 着座した座席識別子またはゼロ.
+    private int seat;
 
     // 着座可能である場合は true. 着席不能である場合は false.
-    private boolean visible = true;
+    private boolean visible;
 
+    // 既定値で初期化する.
     public User() {
-    }
-
-    public User(XmlResourceParser parser) {
-        load(parser);
-    }
-
-    public User(int index, Bundle input) {
-        load(index, input);
+        id = 0;
+        name = null;
+        seat = 0;
+        visible = true;
     }
 
     public int getId() {
@@ -77,21 +74,25 @@ public class User {
         return getKey(index, VISIBLE);
     }
 
-    public void load(XmlResourceParser parser) {
-        id = Integer.parseInt(parser.getAttributeValue(NAMESPACE, ID));
-        name = parser.getAttributeValue(NAMESPACE, NAME);
-        seat = 0;
-        visible = true;
+    public boolean isValid() {
+        return (id != 0) && (name != null);
     }
 
-    public void load(int index, Bundle input) {
+    public void loadInstance(int index, Bundle input) {
         id = input.getInt(getIdKey(index));
         name = input.getString(getNameKey(index));
         seat = input.getInt(getSeatKey(index));
         visible = input.getBoolean(getVisibleKey(index));
     }
 
-    public void save(int index, Bundle output) {
+    public void loadXml(XmlResourceParser parser) {
+        id = Integer.parseInt(parser.getAttributeValue(NAMESPACE, ID));
+        name = parser.getAttributeValue(NAMESPACE, NAME);
+        seat = 0;
+        visible = true;
+    }
+
+    public void saveInstance(int index, Bundle output) {
         output.putInt(getIdKey(index), getId());
         output.putString(getNameKey(index), getName());
         output.putInt(getSeatKey(index), getSeat());

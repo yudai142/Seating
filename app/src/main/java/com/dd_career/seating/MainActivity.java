@@ -16,28 +16,33 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 // アプリケーションのメイン エントリ ポイント.
 public class MainActivity extends AppCompatActivity {
-    private final int SEAT_MAX_INDEX = 23; // 最大座席番号.
-    private final int SEAT_MIN_INDEX = 1; // 最小座席番号.
-    private Seats seats = new Seats(); // 座席のコレクション.
-    private Users users = new Users(); // 利用者のコレクション.
+    private final int SEAT_MAX_ID = 23; // 最大座席番号.
+    private final int SEAT_MIN_ID = 1; // 最小座席番号.
+    private Users users; // 利用者のコレクション.
+
+    // 既定値で初期化する.
+    public MainActivity() {
+        users = new Users();
+    }
 
     // 指定した座席に利用者を設定する.
-    private void announceSeat(Seat seat, User newUser) {
+    private void announceSeat(int seatId, int userId) {
         Resources resources = getResources();
-        User oldUser = seat.getUser();
+        User oldUser = users.findBySeat(seatId);
+        User newUser = users.findById(userId);
         StringBuilder builder = new StringBuilder();
 
         if (oldUser != null) {
             builder.append(Program.formatString(
                     resources.getString(R.string.seat_announcement_format),
-                    seat.getIndex(),
+                    seatId,
                     oldUser.getName(),
                     resources.getString(R.string.seat_out)));
         }
         if (newUser != null) {
             builder.append(Program.formatString(
                     resources.getString(R.string.seat_announcement_format),
-                    seat.getIndex(),
+                    seatId,
                     newUser.getName(),
                     resources.getString(R.string.seat_in)));
         }
@@ -47,32 +52,29 @@ public class MainActivity extends AppCompatActivity {
         dialog.setMessage(builder.toString());
         dialog.setNegativeButton(R.string.cancel, null);
         dialog.setPositiveButton(R.string.accept, (dialogInterface, index) -> {
-            seat.setUser(newUser);
+            updateSeat(seatId, userId);
         });
 
         dialog.show();
     }
 
     // 着座する利用者を選択する.
-    private void chooseUser(Seat seat) {
+    private void chooseUser(int seatId) {
         Resources resources = getResources();
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle(resources.getString(R.string.seat_in));
         dialog.setNegativeButton(resources.getString(R.string.cancel), null);
-        dialog.setItems(users.getNames(), (dialogInterface, index) -> {
-            announceSeat(seat, users.get(index));
+        dialog.setItems(users.getNames(), (dialogInterface, selectedIndex) -> {
+            User selectedUser = users.get(selectedIndex);
+            int userId = (selectedUser != null) ? selectedUser.getId() : 0;
+            announceSeat(seatId, userId);
         });
         dialog.show();
     }
 
-    private void loadSeats() {
-        for (int index = SEAT_MIN_INDEX; index <= SEAT_MAX_INDEX; index++) {
-            Button button = (Button)findViewById(Program.getSeatViewId(index));
-
-            if (button != null) {
-                seats.add(new Seat(index, button));
-            }
-        }
+    // Activity を復元する.
+    private void loadInstance(Bundle input) {
+        users.loadInstance(input);
     }
 
     private void loadUsers() {
@@ -84,17 +86,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Activity 作成時に呼び出される.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        loadSeats();
         loadUsers();
-        seats.update();
-
-        if (savedInstanceState != null) {
-
-        }
+        updateSeatButtons();
     }
 
     @Override
@@ -137,26 +135,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
+        loadInstance(savedInstanceState);
+        updateSeatButtons();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
     }
 
+    // Activity 破棄時に呼び出される.
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
+        saveInstance(outState);
     }
 
     // 座席ボタンを押した場合に呼び出される.
     public void onSeatButtonClick(View view) {
-        Seat seat = seats.findSeatByView(view);
+        int seatId = Program.getSeatIndex(view);
+        User seatUser = users.findBySeat(seatId);
 
-        if (seat != null) {
-            if (seat.isEmpty()) {
-                chooseUser(seat);
-            }
-            else {
-                announceSeat(seat, null);
-            }
+        if (seatUser != null) {
+            announceSeat(seatId, 0);
+        }
+        else {
+            chooseUser(seatId);
         }
     }
 
@@ -170,11 +176,70 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
     }
 
+    // Activity を保存する.
+    private void saveInstance(Bundle output) {
+        users.saveInstance(output);
+    }
+
     // 指定した例外を説明するダイアログを表示する.
     private void showAlert(Exception exception) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setMessage(exception.getMessage());
         dialog.setTitle(getResources().getString(R.string.error));
         dialog.show();
+    }
+
+    // 指定した利用者を座席に座らせる.
+    private void updateSeat(int seatId, int userId) {
+        User newUser = users.findById(userId);
+        User oldUser = users.findBySeat(seatId);
+
+        if (oldUser != null) {
+            oldUser.setSeat(0);
+        }
+        if (newUser != null) {
+            newUser.setSeat(seatId);
+        }
+
+        updateSeatButton(seatId, userId);
+    }
+
+    // 座席ボタン表示を更新する.
+    private void updateSeatButton(int seatId, int userId) {
+        int buttonId = Program.getSeatViewId(seatId);
+        View view = findViewById(buttonId);
+
+        if (view instanceof Button) {
+            Button button = (Button)view;
+            Resources resources = getResources();
+            User user = users.findById(userId);
+            String userName;
+            int buttonColor;
+
+            if (user != null) {
+                buttonColor = resources.getColor(R.color.used_seat);
+                userName = user.getName();
+            }
+            else {
+                buttonColor = resources.getColor(R.color.empty_seat);
+                userName = resources.getString(R.string.empty_seat);
+            }
+
+            button.setBackgroundColor(buttonColor);
+            button.setText(Program.formatString(
+                    resources.getString(R.string.seat_button_text_format),
+                    seatId,
+                    userName));
+        }
+    }
+
+    // 座席ボタン表示を更新する.
+    private void updateSeatButtons() {
+        int userCount = users.size();
+
+        for (int userIndex = 0; userIndex < userCount; userIndex++) {
+            User user = users.get(userIndex);
+            updateSeatButton(user.getSeat(), user.getId());
+        }
     }
 }

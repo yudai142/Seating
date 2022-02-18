@@ -42,7 +42,7 @@ public final class Program {
             case 21: id = R.id.seat_button_21; break;
             case 22: id = R.id.seat_button_22; break;
             case 23: id = R.id.seat_button_23; break;
-            default: id = 0; assert(false); break;
+            default: id = 0; break;
         }
 
         return id;
@@ -75,7 +75,7 @@ public final class Program {
             case R.id.seat_button_21: index = 21; break;
             case R.id.seat_button_22: index = 22; break;
             case R.id.seat_button_23: index = 23; break;
-            default: index = 0; assert(false); break;
+            default: index = 0; break;
         }
 
         return index;
