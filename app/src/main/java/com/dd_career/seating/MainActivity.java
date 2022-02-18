@@ -72,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    private Button findButtonById(int id) {
+        View view = findViewById(id);
+        return (view instanceof Button) ? (Button)view : null;
+    }
+
     // Activity を復元する.
     private void loadInstance(Bundle input) {
         users.loadInstance(input);
@@ -135,8 +140,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onRestoreInstanceState(savedInstanceState, persistentState);
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
         loadInstance(savedInstanceState);
         updateSeatButtons();
     }
@@ -148,8 +153,8 @@ public class MainActivity extends AppCompatActivity {
 
     // Activity 破棄時に呼び出される.
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
         saveInstance(outState);
     }
 
@@ -207,10 +212,9 @@ public class MainActivity extends AppCompatActivity {
     // 座席ボタン表示を更新する.
     private void updateSeatButton(int seatId, int userId) {
         int buttonId = Program.getSeatViewId(seatId);
-        View view = findViewById(buttonId);
+        Button button = findButtonById(buttonId);
 
-        if (view instanceof Button) {
-            Button button = (Button)view;
+        if (button != null) {
             Resources resources = getResources();
             User user = users.findById(userId);
             String userName;
@@ -233,13 +237,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // 座席ボタン表示を更新する.
+    // 各座席ボタンについて, 座席ボタン表示を更新する.
     private void updateSeatButtons() {
-        int userCount = users.size();
-
-        for (int userIndex = 0; userIndex < userCount; userIndex++) {
-            User user = users.get(userIndex);
-            updateSeatButton(user.getSeat(), user.getId());
+        for (int seatId = SEAT_MIN_ID; seatId < SEAT_MAX_ID; seatId++) {
+            User user = users.findBySeat(seatId);
+            int userId = (user != null) ? user.getId() : 0;
+            updateSeatButton(seatId, userId);
         }
     }
 }
