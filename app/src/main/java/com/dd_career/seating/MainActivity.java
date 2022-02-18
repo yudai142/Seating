@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         loadUsers();
         updateSeatButtons();
+
+        View view = findViewById(R.id.room_image_view);
+        view.setOnTouchListener(new TouchListener());
     }
 
     @Override
@@ -239,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
 
     // 各座席ボタンについて, 座席ボタン表示を更新する.
     private void updateSeatButtons() {
-        for (int seatId = SEAT_MIN_ID; seatId < SEAT_MAX_ID; seatId++) {
+        for (int seatId = SEAT_MIN_ID; seatId <= SEAT_MAX_ID; seatId++) {
             User user = users.findBySeat(seatId);
             int userId = (user != null) ? user.getId() : 0;
             updateSeatButton(seatId, userId);

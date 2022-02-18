@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <!-- 間取り -->
 
     <ImageView
@@ -25,8 +26,8 @@
         android:layout_height="100dp"
         android:layout_marginStart="300dp"
         android:layout_marginTop="150dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/room_image_view"
+        app:layout_constraintTop_toTopOf="@id/room_image_view"
         app:srcCompat="@drawable/ic_vector_2" />
 
     <!-- 机 2 -->
