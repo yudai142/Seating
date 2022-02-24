@@ -3,15 +3,20 @@ import android.app.AlertDialog;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.text.format.DateUtils;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextClock;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
 // アプリケーションのメイン エントリ ポイント.
@@ -98,9 +103,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         loadUsers();
         updateSeatButtons();
-
-        View view = findViewById(R.id.room_image_view);
-        view.setOnTouchListener(new TouchListener());
+        updateRoom();
     }
 
     @Override
@@ -135,6 +138,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+    }
+
+    // リセットボタンを押した場合に呼び出される.
+    public void onResetButtonClick(View view) {
+        reset();
     }
 
     @Override
@@ -184,6 +192,27 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
     }
 
+    public void onUpdateButtonClick(View view) {
+        updateLatestTimeText();
+    }
+
+    // 間取り図を原点へ移動する.
+    private void reset() {
+        View view = findViewById(R.id.room_layout);
+
+        if (view != null) {
+            ViewGroup.LayoutParams params = view.getLayoutParams();
+
+            if (params instanceof ViewGroup.MarginLayoutParams) {
+                ViewGroup.MarginLayoutParams layout = (ViewGroup.MarginLayoutParams)params;
+                layout.leftMargin = 0;
+                layout.topMargin = 0;
+            }
+
+            view.layout(0, 0, view.getWidth(), view.getHeight());
+        }
+    }
+
     // Activity を保存する.
     private void saveInstance(Bundle output) {
         users.saveInstance(output);
@@ -195,6 +224,25 @@ public class MainActivity extends AppCompatActivity {
         dialog.setMessage(exception.getMessage());
         dialog.setTitle(getResources().getString(R.string.error));
         dialog.show();
+    }
+
+    private void updateLatestTimeText() {
+        View view = findViewById(R.id.latest_time_text);
+
+        if (view instanceof TextView) {
+            Date date = new Date();
+            TextView textView = (TextView)view;
+            textView.setText(date.toString());
+        }
+    }
+
+    // 間取り図にタッチ機能を登録する.
+    private void updateRoom() {
+        View room = findViewById(R.id.room_layout);
+
+        if (room != null) {
+            room.setOnTouchListener(new TouchListener());
+        }
     }
 
     // 指定した利用者を座席に座らせる.

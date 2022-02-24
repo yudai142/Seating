@@ -57,9 +57,13 @@
     <string name="button_50">Button 50</string>
     <string name="cancel">キャンセル</string>
     <string name="copyright">Copyright © 2022 Taichi Murakami.</string>
+    <string name="current_time">現在時刻: </string>
+    <string name="date_format">yyyymmddthhmmss</string>
     <string name="empty_seat">(空席)</string>
+    <string name="empty_value">1234567890</string>
     <string name="error">エラー</string>
     <string name="help">ヘルプ</string>
+    <string name="latest_update">最終更新</string>
     <string name="list">一覧</string>
     <string name="logs">履歴</string>
     <string name="no">いいえ</string>
