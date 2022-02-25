@@ -1,83 +1,102 @@
 package com.dd_career.seating;
 
-import android.app.AlertDialog;
 import android.view.View;
 
 import java.util.Locale;
 
 public final class Program {
-    private static final Locale LOCALE = Locale.JAPANESE;
-
-    private Program() {
+    public static final class ID {
+        public static final int OPTIONS_MENU = R.id.options_menu;
+        public static final int RESET_BUTTON = R.id.reset_button;
+        public static final int SEAT_BUTTON_1 = R.id.seat_button_1;
+        public static final int SEAT_BUTTON_2 = R.id.seat_button_2;
+        public static final int SEAT_BUTTON_3 = R.id.seat_button_3;
+        public static final int SEAT_BUTTON_4 = R.id.seat_button_4;
+        public static final int SEAT_BUTTON_5 = R.id.seat_button_5;
+        public static final int SEAT_BUTTON_6 = R.id.seat_button_6;
+        public static final int SEAT_BUTTON_7 = R.id.seat_button_7;
+        public static final int SEAT_BUTTON_8 = R.id.seat_button_8;
+        public static final int SEAT_BUTTON_9 = R.id.seat_button_9;
+        public static final int SEAT_BUTTON_10 = R.id.seat_button_10;
+        public static final int SEAT_BUTTON_11 = R.id.seat_button_11;
+        public static final int SEAT_BUTTON_12 = R.id.seat_button_12;
+        public static final int SEAT_BUTTON_13 = R.id.seat_button_13;
+        public static final int SEAT_BUTTON_14 = R.id.seat_button_14;
+        public static final int SEAT_BUTTON_15 = R.id.seat_button_15;
+        public static final int SEAT_BUTTON_16 = R.id.seat_button_16;
+        public static final int SEAT_BUTTON_17 = R.id.seat_button_17;
+        public static final int SEAT_BUTTON_18 = R.id.seat_button_18;
+        public static final int SEAT_BUTTON_19 = R.id.seat_button_19;
+        public static final int SEAT_BUTTON_20 = R.id.seat_button_20;
+        public static final int SEAT_BUTTON_21 = R.id.seat_button_21;
+        public static final int SEAT_BUTTON_22 = R.id.seat_button_22;
+        public static final int SEAT_BUTTON_23 = R.id.seat_button_23;
+        public static final int UPDATE_BUTTON = R.id.update_button;
+        private ID() {}
     }
+
+    private static final Locale LOCALE = Locale.JAPANESE;
+    private Program() {}
 
     public static String formatString(String format, Object... args) {
         return String.format(LOCALE, format, args);
     }
 
-    public static int getSeatViewId(int index) {
-        int id = 0;
-
+    public static int getSeatButtonId(int index) {
         switch (index) {
-            case 1: id = R.id.seat_button_1; break;
-            case 2: id = R.id.seat_button_2; break;
-            case 3: id = R.id.seat_button_3; break;
-            case 4: id = R.id.seat_button_4; break;
-            case 5: id = R.id.seat_button_5; break;
-            case 6: id = R.id.seat_button_6; break;
-            case 7: id = R.id.seat_button_7; break;
-            case 8: id = R.id.seat_button_8; break;
-            case 9: id = R.id.seat_button_9; break;
-            case 10: id = R.id.seat_button_10; break;
-            case 11: id = R.id.seat_button_11; break;
-            case 12: id = R.id.seat_button_12; break;
-            case 13: id = R.id.seat_button_13; break;
-            case 14: id = R.id.seat_button_14; break;
-            case 15: id = R.id.seat_button_15; break;
-            case 16: id = R.id.seat_button_16; break;
-            case 17: id = R.id.seat_button_17; break;
-            case 18: id = R.id.seat_button_18; break;
-            case 19: id = R.id.seat_button_19; break;
-            case 20: id = R.id.seat_button_20; break;
-            case 21: id = R.id.seat_button_21; break;
-            case 22: id = R.id.seat_button_22; break;
-            case 23: id = R.id.seat_button_23; break;
-            default: id = 0; break;
+            case 1: return ID.SEAT_BUTTON_1;
+            case 2: return ID.SEAT_BUTTON_2;
+            case 3: return ID.SEAT_BUTTON_3;
+            case 4: return ID.SEAT_BUTTON_4;
+            case 5: return ID.SEAT_BUTTON_5;
+            case 6: return ID.SEAT_BUTTON_6;
+            case 7: return ID.SEAT_BUTTON_7;
+            case 8: return ID.SEAT_BUTTON_8;
+            case 9: return ID.SEAT_BUTTON_9;
+            case 10: return ID.SEAT_BUTTON_10;
+            case 11: return ID.SEAT_BUTTON_11;
+            case 12: return ID.SEAT_BUTTON_12;
+            case 13: return ID.SEAT_BUTTON_13;
+            case 14: return ID.SEAT_BUTTON_14;
+            case 15: return ID.SEAT_BUTTON_15;
+            case 16: return ID.SEAT_BUTTON_16;
+            case 17: return ID.SEAT_BUTTON_17;
+            case 18: return ID.SEAT_BUTTON_18;
+            case 19: return ID.SEAT_BUTTON_19;
+            case 20: return ID.SEAT_BUTTON_20;
+            case 21: return ID.SEAT_BUTTON_21;
+            case 22: return ID.SEAT_BUTTON_22;
+            case 23: return ID.SEAT_BUTTON_23;
+            default: return 0;
         }
-
-        return id;
     }
 
-    public static int getSeatIndex(View view) {
-        int index;
-
+    public static int getSeatId(View view) {
         switch (view.getId()) {
-            case R.id.seat_button_1: index = 1; break;
-            case R.id.seat_button_2: index = 2; break;
-            case R.id.seat_button_3: index = 3; break;
-            case R.id.seat_button_4: index = 4; break;
-            case R.id.seat_button_5: index = 5; break;
-            case R.id.seat_button_6: index = 6; break;
-            case R.id.seat_button_7: index = 7; break;
-            case R.id.seat_button_8: index = 8; break;
-            case R.id.seat_button_9: index = 9; break;
-            case R.id.seat_button_10: index = 10; break;
-            case R.id.seat_button_11: index = 11; break;
-            case R.id.seat_button_12: index = 12; break;
-            case R.id.seat_button_13: index = 13; break;
-            case R.id.seat_button_14: index = 14; break;
-            case R.id.seat_button_15: index = 15; break;
-            case R.id.seat_button_16: index = 16; break;
-            case R.id.seat_button_17: index = 17; break;
-            case R.id.seat_button_18: index = 18; break;
-            case R.id.seat_button_19: index = 19; break;
-            case R.id.seat_button_20: index = 20; break;
-            case R.id.seat_button_21: index = 21; break;
-            case R.id.seat_button_22: index = 22; break;
-            case R.id.seat_button_23: index = 23; break;
-            default: index = 0; break;
+            case ID.SEAT_BUTTON_1: return 1;
+            case ID.SEAT_BUTTON_2: return 2;
+            case ID.SEAT_BUTTON_3: return 3;
+            case ID.SEAT_BUTTON_4: return 4;
+            case ID.SEAT_BUTTON_5: return 5;
+            case ID.SEAT_BUTTON_6: return 6;
+            case ID.SEAT_BUTTON_7: return 7;
+            case ID.SEAT_BUTTON_8: return 8;
+            case ID.SEAT_BUTTON_9: return 9;
+            case ID.SEAT_BUTTON_10: return 10;
+            case ID.SEAT_BUTTON_11: return 11;
+            case ID.SEAT_BUTTON_12: return 12;
+            case ID.SEAT_BUTTON_13: return 13;
+            case ID.SEAT_BUTTON_14: return 14;
+            case ID.SEAT_BUTTON_15: return 15;
+            case ID.SEAT_BUTTON_16: return 16;
+            case ID.SEAT_BUTTON_17: return 17;
+            case ID.SEAT_BUTTON_18: return 18;
+            case ID.SEAT_BUTTON_19: return 19;
+            case ID.SEAT_BUTTON_20: return 20;
+            case ID.SEAT_BUTTON_21: return 21;
+            case ID.SEAT_BUTTON_22: return 22;
+            case ID.SEAT_BUTTON_23: return 23;
+            default: return 0;
         }
-
-        return index;
     }
 }

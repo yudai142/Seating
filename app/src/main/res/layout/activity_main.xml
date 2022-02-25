@@ -13,9 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:text="@string/reset"
-        android:onClick="onResetButtonClick"
-        app:layout_constraintTop_toTopOf="@+id/update_button"
-        app:layout_constraintRight_toLeftOf="@+id/update_button"/>
+        app:layout_constraintTop_toTopOf="@id/update_button"
+        app:layout_constraintRight_toLeftOf="@id/update_button"/>
 
     <!-- 更新 -->
     <Button
@@ -25,7 +24,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:text="@string/update"
-        android:onClick="onUpdateButtonClick"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
@@ -73,7 +71,7 @@
 
         <!-- 間取り図 -->
         <ImageView
-            android:id="@+id/room_image_view"
+            android:id="@+id/room_image"
             android:contentDescription="@null"
             android:layout_width="1000dp"
             android:layout_height="1000dp"
@@ -83,55 +81,55 @@
 
         <!-- 机 1 -->
         <ImageView
-            android:id="@+id/table_seat_image_view_1"
+            android:id="@+id/table_image_1"
             android:contentDescription="@null"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="150dp"
-            app:layout_constraintLeft_toLeftOf="@id/room_image_view"
-            app:layout_constraintTop_toTopOf="@id/room_image_view"
+            app:layout_constraintStart_toStartOf="@id/table_text_1"
+            app:layout_constraintEnd_toEndOf="@id/table_text_1"
+            app:layout_constraintTop_toTopOf="@id/table_text_1"
+            app:layout_constraintBottom_toBottomOf="@id/table_text_1"
             app:srcCompat="@drawable/ic_vector_2" />
 
         <!-- 机 2 -->
         <ImageView
-            android:id="@+id/table_seat_image_view_2"
+            android:id="@+id/table_image_2"
             android:contentDescription="@null"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="400dp"
-            android:layout_marginTop="300dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/table_text_2"
+            app:layout_constraintEnd_toEndOf="@id/table_text_2"
+            app:layout_constraintTop_toTopOf="@id/table_text_2"
+            app:layout_constraintBottom_toBottomOf="@id/table_text_2"
             app:srcCompat="@drawable/ic_vector_2" />
 
         <!-- 机 3 -->
         <ImageView
-            android:id="@+id/table_seat_image_view_3"
+            android:id="@+id/table_image_3"
             android:contentDescription="@null"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="450dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/table_text_3"
+            app:layout_constraintEnd_toEndOf="@id/table_text_3"
+            app:layout_constraintTop_toTopOf="@id/table_text_3"
+            app:layout_constraintBottom_toBottomOf="@id/table_text_3"
             app:srcCompat="@drawable/ic_vector_2" />
 
         <!-- 机 4 -->
         <ImageView
-            android:id="@+id/table_seat_image_view_4"
+            android:id="@+id/table_image_4"
             android:contentDescription="@null"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="600dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/table_text_4"
+            app:layout_constraintEnd_toEndOf="@id/table_text_4"
+            app:layout_constraintTop_toTopOf="@id/table_text_4"
+            app:layout_constraintBottom_toBottomOf="@id/table_text_4"
             app:srcCompat="@drawable/ic_vector_2" />
 
         <!-- 個室 -->
         <TextView
-            android:id="@+id/private_room_text_view"
+            android:id="@+id/private_room_text"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -143,48 +141,87 @@
 
         <!-- 机 1 -->
         <TextView
+            android:id="@+id/table_text_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/table_seat"
+            android:layout_marginStart="350dp"
+            android:layout_marginTop="200dp"
+            android:text="@string/table_1"
             android:textAlignment="center"
-            app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_1"
-            app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_1"
-            app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_1"
-            app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_1"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <!-- 机 2 -->
         <TextView
+            android:id="@+id/table_text_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/table_seat"
+            android:layout_marginStart="400dp"
+            android:layout_marginTop="350dp"
+            android:text="@string/table_2"
             android:textAlignment="center"
-            app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_2"
-            app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_2"
-            app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_2"
-            app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_2"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <!-- 机 3 -->
         <TextView
+            android:id="@+id/table_text_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/table_seat"
+            android:layout_marginStart="350dp"
+            android:layout_marginTop="500dp"
+            android:text="@string/table_3"
             android:textAlignment="center"
-            app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_3"
-            app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_3"
-            app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_3"
-            app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_3"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <!-- 机 4 -->
         <TextView
+            android:id="@+id/table_text_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/table_seat"
+            android:layout_marginStart="350dp"
+            android:layout_marginTop="650dp"
+            android:text="@string/table_4"
             android:textAlignment="center"
-            app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_4"
-            app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_4"
-            app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_4"
-            app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_4"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
+        <!-- 机 5 -->
+        <TextView
+            android:id="@+id/table_text_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="700dp"
+            android:layout_marginTop="350dp"
+            android:text="@string/table_5"
+            android:textAlignment="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!-- 机 6 -->
+        <TextView
+            android:id="@+id/table_text_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="700dp"
+            android:layout_marginTop="650dp"
+            android:text="@string/table_6"
+            android:textAlignment="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!-- 机 7 -->
+        <TextView
+            android:id="@+id/table_text_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="700dp"
+            android:layout_marginTop="850dp"
+            android:text="@string/table_7"
+            android:textAlignment="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <!-- 個室 1 -->
         <Button
@@ -193,10 +230,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="@string/button_1"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/private_room_text_view"
-            app:layout_constraintTop_toTopOf="@+id/private_room_text_view"
-            app:layout_constraintRight_toRightOf="@+id/private_room_text_view" />
+            app:layout_constraintLeft_toLeftOf="@id/private_room_text"
+            app:layout_constraintTop_toTopOf="@id/private_room_text"
+            app:layout_constraintRight_toRightOf="@id/private_room_text" />
 
         <!-- 個室 2 -->
         <Button
@@ -205,10 +241,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="65dp"
             android:text="@string/button_2"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/seat_button_1"
-            app:layout_constraintTop_toTopOf="@+id/seat_button_1"
-            app:layout_constraintRight_toRightOf="@+id/seat_button_1" />
+            app:layout_constraintLeft_toLeftOf="@id/seat_button_1"
+            app:layout_constraintTop_toTopOf="@id/seat_button_1"
+            app:layout_constraintRight_toRightOf="@id/seat_button_1" />
 
         <!-- 個室 3 -->
         <Button
@@ -217,10 +252,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="65dp"
             android:text="@string/button_3"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/seat_button_2"
-            app:layout_constraintTop_toTopOf="@+id/seat_button_2"
-            app:layout_constraintRight_toRightOf="@+id/seat_button_2" />
+            app:layout_constraintLeft_toLeftOf="@id/seat_button_2"
+            app:layout_constraintTop_toTopOf="@id/seat_button_2"
+            app:layout_constraintRight_toRightOf="@id/seat_button_2" />
 
         <!-- 個室 4 -->
         <Button
@@ -229,10 +263,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="65dp"
             android:text="@string/button_4"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/seat_button_3"
-            app:layout_constraintTop_toTopOf="@+id/seat_button_3"
-            app:layout_constraintRight_toRightOf="@+id/seat_button_3" />
+            app:layout_constraintLeft_toLeftOf="@id/seat_button_3"
+            app:layout_constraintTop_toTopOf="@id/seat_button_3"
+            app:layout_constraintRight_toRightOf="@id/seat_button_3" />
 
         <!-- 個室 5 -->
         <Button
@@ -241,10 +274,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="65dp"
             android:text="@string/button_5"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/seat_button_4"
-            app:layout_constraintTop_toTopOf="@+id/seat_button_4"
-            app:layout_constraintRight_toRightOf="@+id/seat_button_4" />
+            app:layout_constraintLeft_toLeftOf="@id/seat_button_4"
+            app:layout_constraintTop_toTopOf="@id/seat_button_4"
+            app:layout_constraintRight_toRightOf="@id/seat_button_4" />
 
         <!-- 個室 6 -->
         <Button
@@ -253,10 +285,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="65dp"
             android:text="@string/button_6"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/seat_button_5"
-            app:layout_constraintTop_toTopOf="@+id/seat_button_5"
-            app:layout_constraintRight_toRightOf="@+id/seat_button_5" />
+            app:layout_constraintLeft_toLeftOf="@id/seat_button_5"
+            app:layout_constraintTop_toTopOf="@id/seat_button_5"
+            app:layout_constraintRight_toRightOf="@id/seat_button_5" />
 
         <!-- 個室 7 -->
         <Button
@@ -265,201 +296,291 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="65dp"
             android:text="@string/button_7"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/seat_button_6"
-            app:layout_constraintTop_toTopOf="@+id/seat_button_6"
-            app:layout_constraintRight_toRightOf="@+id/seat_button_6" />
+            app:layout_constraintLeft_toLeftOf="@id/seat_button_6"
+            app:layout_constraintTop_toTopOf="@id/seat_button_6"
+            app:layout_constraintRight_toRightOf="@id/seat_button_6" />
 
         <!-- 机 1 左上 -->
         <Button
             android:id="@+id/seat_button_8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="60dp"
-            android:layout_marginBottom="60dp"
             android:text="@string/button_8"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_1"
-            app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_1" />
+            app:layout_constraintEnd_toStartOf="@id/table_text_1"
+            app:layout_constraintBottom_toTopOf="@id/table_text_1" />
 
         <!-- 机 1 右上 -->
         <Button
             android:id="@+id/seat_button_9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginBottom="60dp"
             android:text="@string/button_9"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_1"
-            app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_1" />
+            app:layout_constraintStart_toEndOf="@id/table_text_1"
+            app:layout_constraintBottom_toTopOf="@id/table_text_1" />
 
         <!-- 机 1 左下 -->
         <Button
             android:id="@+id/seat_button_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="60dp"
-            android:layout_marginTop="60dp"
             android:text="@string/button_10"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_1"
-            app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_1" />
+            app:layout_constraintEnd_toStartOf="@id/table_text_1"
+            app:layout_constraintTop_toBottomOf="@id/table_text_1" />
 
         <!-- 机 1 右下 -->
         <Button
             android:id="@+id/seat_button_11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="60dp"
             android:text="@string/button_11"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_1"
-            app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_1" />
+            app:layout_constraintStart_toEndOf="@id/table_text_1"
+            app:layout_constraintTop_toBottomOf="@id/table_text_1" />
 
         <!-- 机 2 左上 -->
         <Button
             android:id="@+id/seat_button_12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="60dp"
-            android:layout_marginBottom="60dp"
             android:text="@string/button_12"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_2"
-            app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_2" />
+            app:layout_constraintEnd_toStartOf="@id/table_text_2"
+            app:layout_constraintBottom_toTopOf="@id/table_text_2" />
 
         <!-- 机 2 右上 -->
         <Button
             android:id="@+id/seat_button_13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginBottom="60dp"
             android:text="@string/button_13"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_2"
-            app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_2" />
+            app:layout_constraintStart_toEndOf="@id/table_text_2"
+            app:layout_constraintBottom_toTopOf="@id/table_text_2" />
 
         <!-- 机 2 左下 -->
         <Button
             android:id="@+id/seat_button_14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="60dp"
-            android:layout_marginTop="60dp"
             android:text="@string/button_14"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_2"
-            app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_2" />
+            app:layout_constraintEnd_toStartOf="@id/table_text_2"
+            app:layout_constraintTop_toBottomOf="@id/table_text_2" />
 
         <!-- 机 2 右下 -->
         <Button
             android:id="@+id/seat_button_15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="60dp"
             android:text="@string/button_15"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_2"
-            app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_2" />
+            app:layout_constraintStart_toEndOf="@id/table_text_2"
+            app:layout_constraintTop_toBottomOf="@id/table_text_2" />
 
         <!-- 机 3 左上 -->
         <Button
             android:id="@+id/seat_button_16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="60dp"
-            android:layout_marginBottom="60dp"
             android:text="@string/button_16"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_3"
-            app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_3" />
+            app:layout_constraintEnd_toStartOf="@id/table_text_3"
+            app:layout_constraintBottom_toTopOf="@id/table_text_3" />
 
         <!-- 机 3 右上 -->
         <Button
             android:id="@+id/seat_button_17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginBottom="60dp"
             android:text="@string/button_17"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_3"
-            app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_3" />
+            app:layout_constraintStart_toEndOf="@id/table_text_3"
+            app:layout_constraintBottom_toTopOf="@id/table_text_3" />
 
         <!-- 机 3 左下 -->
         <Button
             android:id="@+id/seat_button_18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="60dp"
-            android:layout_marginTop="60dp"
             android:text="@string/button_18"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_3"
-            app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_3" />
+            app:layout_constraintEnd_toStartOf="@id/table_text_3"
+            app:layout_constraintTop_toBottomOf="@id/table_text_3" />
 
         <!-- 机 3 右下 -->
         <Button
             android:id="@+id/seat_button_19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="60dp"
             android:text="@string/button_19"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_3"
-            app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_3" />
+            app:layout_constraintStart_toEndOf="@id/table_text_3"
+            app:layout_constraintTop_toBottomOf="@id/table_text_3" />
 
         <!-- 机 4 左上 -->
         <Button
             android:id="@+id/seat_button_20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="60dp"
-            android:layout_marginBottom="60dp"
             android:text="@string/button_20"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_4"
-            app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_4" />
+            app:layout_constraintEnd_toStartOf="@id/table_text_4"
+            app:layout_constraintBottom_toTopOf="@id/table_text_4" />
 
         <!-- 机 4 右上 -->
         <Button
             android:id="@+id/seat_button_21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginBottom="60dp"
             android:text="@string/button_21"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_4"
-            app:layout_constraintBottom_toBottomOf="@+id/table_seat_image_view_4" />
+            app:layout_constraintStart_toEndOf="@id/table_text_4"
+            app:layout_constraintBottom_toTopOf="@id/table_text_4" />
 
         <!-- 机 4 左下 -->
         <Button
             android:id="@+id/seat_button_22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="60dp"
-            android:layout_marginTop="60dp"
             android:text="@string/button_22"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintRight_toRightOf="@+id/table_seat_image_view_4"
-            app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_4" />
+            app:layout_constraintEnd_toStartOf="@id/table_text_4"
+            app:layout_constraintTop_toBottomOf="@id/table_text_4" />
 
         <!-- 机 4 右下 -->
         <Button
             android:id="@+id/seat_button_23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="60dp"
             android:text="@string/button_23"
-            android:onClick="onSeatButtonClick"
-            app:layout_constraintLeft_toLeftOf="@+id/table_seat_image_view_4"
-            app:layout_constraintTop_toTopOf="@+id/table_seat_image_view_4" />
+            app:layout_constraintStart_toEndOf="@id/table_text_4"
+            app:layout_constraintTop_toBottomOf="@id/table_text_4" />
+
+        <!-- 机 5 左上 -->
+        <Button
+            android:id="@+id/seat_button_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/button_24"
+            app:layout_constraintRight_toLeftOf="@id/table_text_5"
+            app:layout_constraintBottom_toTopOf="@id/table_text_5"/>
+
+        <!-- 机 5 右上 -->
+        <Button
+            android:id="@+id/seat_button_25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/button_25"
+            app:layout_constraintLeft_toRightOf="@id/table_text_5"
+            app:layout_constraintBottom_toTopOf="@id/table_text_5"/>
+
+        <!-- 机 5 左 -->
+        <Button
+            android:id="@+id/seat_button_26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="@string/button_26"
+            app:layout_constraintRight_toLeftOf="@id/table_text_5"
+            app:layout_constraintTop_toTopOf="@id/table_text_5"
+            app:layout_constraintBottom_toBottomOf="@id/table_text_5"/>
+
+        <!-- 机 5 右 -->
+        <Button
+            android:id="@+id/seat_button_27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/button_27"
+            app:layout_constraintLeft_toRightOf="@id/table_text_5"
+            app:layout_constraintTop_toTopOf="@id/table_text_5"
+            app:layout_constraintBottom_toBottomOf="@id/table_text_5"/>
+
+        <!-- 机 5 左下 -->
+        <Button
+            android:id="@+id/seat_button_28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/button_28"
+            app:layout_constraintRight_toLeftOf="@id/table_text_5"
+            app:layout_constraintTop_toBottomOf="@id/table_text_5"/>
+
+        <!-- 机 5 右下 -->
+        <Button
+            android:id="@+id/seat_button_29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/button_29"
+            app:layout_constraintLeft_toRightOf="@id/table_text_5"
+            app:layout_constraintTop_toBottomOf="@id/table_text_5"/>
+
+        <!-- 机 6 左上 -->
+        <Button
+            android:id="@+id/seat_button_30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_30"
+            app:layout_constraintRight_toLeftOf="@id/table_text_6"
+            app:layout_constraintBottom_toTopOf="@id/table_text_6"/>
+
+        <!-- 机 6 右上 -->
+        <Button
+            android:id="@+id/seat_button_31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_31"
+            app:layout_constraintLeft_toRightOf="@id/table_text_6"
+            app:layout_constraintBottom_toTopOf="@id/table_text_6"/>
+
+        <!-- 机 6 左下 -->
+        <Button
+            android:id="@+id/seat_button_32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_32"
+            app:layout_constraintRight_toLeftOf="@id/table_text_6"
+            app:layout_constraintTop_toBottomOf="@id/table_text_6"/>
+
+        <!-- 机 6 右下 -->
+        <Button
+            android:id="@+id/seat_button_33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_33"
+            app:layout_constraintLeft_toRightOf="@id/table_text_6"
+            app:layout_constraintTop_toBottomOf="@id/table_text_6"/>
+
+        <!-- 机 7 左上 -->
+        <Button
+            android:id="@+id/seat_button_34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_34"
+            app:layout_constraintRight_toLeftOf="@id/table_text_7"
+            app:layout_constraintBottom_toTopOf="@id/table_text_7"/>
+
+        <!-- 机 7 右上 -->
+        <Button
+            android:id="@+id/seat_button_35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_35"
+            app:layout_constraintLeft_toRightOf="@id/table_text_7"
+            app:layout_constraintBottom_toTopOf="@id/table_text_7"/>
+
+        <!-- 机 7 左下 -->
+        <Button
+            android:id="@+id/seat_button_36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_36"
+            app:layout_constraintRight_toLeftOf="@id/table_text_7"
+            app:layout_constraintTop_toBottomOf="@id/table_text_7"/>
+
+        <!-- 机 7 右下 -->
+        <Button
+            android:id="@+id/seat_button_37"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_37"
+            app:layout_constraintLeft_toRightOf="@id/table_text_7"
+            app:layout_constraintTop_toBottomOf="@id/table_text_7"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

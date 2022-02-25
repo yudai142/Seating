@@ -2,8 +2,6 @@ package com.dd_career.seating;
 import android.app.AlertDialog;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.text.format.DateUtils;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,19 +9,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextClock;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Date;
-import java.util.concurrent.atomic.AtomicInteger;
 
 // アプリケーションのメイン エントリ ポイント.
-public class MainActivity extends AppCompatActivity {
-    private final int SEAT_MAX_ID = 23; // 最大座席番号.
-    private final int SEAT_MIN_ID = 1; // 最小座席番号.
-    private Users users; // 利用者のコレクション.
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final int SEAT_MAX_ID = 23; // 最大座席番号.
+    private static final int SEAT_MIN_ID = 1; // 最小座席番号.
+    private final Users users; // 利用者のコレクション.
 
     // 既定値で初期化する.
     public MainActivity() {
@@ -56,9 +53,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.setTitle(resources.getString(R.string.note));
         dialog.setMessage(builder.toString());
         dialog.setNegativeButton(R.string.cancel, null);
-        dialog.setPositiveButton(R.string.accept, (dialogInterface, index) -> {
-            updateSeat(seatId, userId);
-        });
+        dialog.setPositiveButton(R.string.accept, (dialogInterface, index) -> updateSeat(seatId, userId));
 
         dialog.show();
     }
@@ -96,6 +91,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onClick(View sender) {
+        switch (sender.getId()) {
+            case Program.ID.RESET_BUTTON:
+                reset();
+                break;
+            case Program.ID.UPDATE_BUTTON:
+                updateLatestTimeText();
+                break;
+            default:
+                onSeatButtonClick(sender);
+                break;
+        }
+    }
+
     // Activity 作成時に呼び出される.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +114,12 @@ public class MainActivity extends AppCompatActivity {
         loadUsers();
         updateSeatButtons();
         updateRoom();
+        findViewById(R.id.reset_button).setOnClickListener(this);
+        findViewById(R.id.update_button).setOnClickListener(this);
+
+        for (int index = SEAT_MIN_ID; index <= SEAT_MAX_ID; index++) {
+            findViewById(Program.getSeatButtonId(index)).setOnClickListener(this);
+        }
     }
 
     @Override
@@ -127,22 +143,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.options_menu:
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == Program.ID.OPTIONS_MENU) {
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-    }
-
-    // リセットボタンを押した場合に呼び出される.
-    public void onResetButtonClick(View view) {
-        reset();
     }
 
     @Override
@@ -164,14 +173,14 @@ public class MainActivity extends AppCompatActivity {
 
     // Activity 破棄時に呼び出される.
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         saveInstance(outState);
     }
 
     // 座席ボタンを押した場合に呼び出される.
     public void onSeatButtonClick(View view) {
-        int seatId = Program.getSeatIndex(view);
+        int seatId = Program.getSeatId(view);
         User seatUser = users.findBySeat(seatId);
 
         if (seatUser != null) {
@@ -190,10 +199,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-    }
-
-    public void onUpdateButtonClick(View view) {
-        updateLatestTimeText();
     }
 
     // 間取り図を原点へ移動する.
@@ -262,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
 
     // 座席ボタン表示を更新する.
     private void updateSeatButton(int seatId, int userId) {
-        int buttonId = Program.getSeatViewId(seatId);
+        int buttonId = Program.getSeatButtonId(seatId);
         Button button = findButtonById(buttonId);
 
         if (button != null) {

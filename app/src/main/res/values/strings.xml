@@ -77,6 +77,13 @@
     <string name="seat_in">着席</string>
     <string name="seat_out">離席</string>
     <string name="settings">設定</string>
+    <string name="table_1">机 1</string>
+    <string name="table_2">机 2</string>
+    <string name="table_3">机 3</string>
+    <string name="table_4">机 4</string>
+    <string name="table_5">机 5</string>
+    <string name="table_6">机 6</string>
+    <string name="table_7">机 7</string>
     <string name="table_seat">机</string>
     <string name="update">更新</string>
     <string name="yes">はい</string>
