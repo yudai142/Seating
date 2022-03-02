@@ -1,12 +1,14 @@
 package com.dd_career.seating;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.view.View;
 
 import java.util.Locale;
 
 public final class Program {
     public static final class ID {
-        public static final int OPTIONS_MENU = R.id.options_menu;
+        public static final int OPTIONS_MENU_ITEM = R.id.options_menu_item;
         public static final int RESET_BUTTON = R.id.reset_button;
         public static final int SEAT_BUTTON_1 = R.id.seat_button_1;
         public static final int SEAT_BUTTON_2 = R.id.seat_button_2;
@@ -32,6 +34,7 @@ public final class Program {
         public static final int SEAT_BUTTON_22 = R.id.seat_button_22;
         public static final int SEAT_BUTTON_23 = R.id.seat_button_23;
         public static final int UPDATE_BUTTON = R.id.update_button;
+        public static final int USERS_MENU_ITEM = R.id.users_menu_item;
         private ID() {}
     }
 
@@ -98,5 +101,13 @@ public final class Program {
             case ID.SEAT_BUTTON_23: return 23;
             default: return 0;
         }
+    }
+
+    // 指定した例外を説明するダイアログを表示する.
+    public static void showAlert(Context context, Exception exception) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+        dialog.setMessage(exception.getMessage());
+        dialog.setTitle(context.getResources().getString(R.string.error));
+        dialog.show();
     }
 }

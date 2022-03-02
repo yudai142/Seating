@@ -1,5 +1,6 @@
 package com.dd_career.seating;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -20,56 +21,71 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int SEAT_MAX_ID = 23; // 最大座席番号.
     private static final int SEAT_MIN_ID = 1; // 最小座席番号.
-    private final Users users; // 利用者のコレクション.
+    private static final int SETTINGS_MENU_ITEM = R.id.settings_menu_item;
+    private static final int USERS_MENU_ITEM = R.id.users_menu_item;
+    private Users users; // 利用者のコレクション.
 
     // 既定値で初期化する.
     public MainActivity() {
-        users = new Users();
     }
 
     // 指定した座席に利用者を設定する.
     private void announceSeat(int seatId, int userId) {
-        Resources resources = getResources();
         User oldUser = users.findBySeat(seatId);
         User newUser = users.findById(userId);
         StringBuilder builder = new StringBuilder();
 
         if (oldUser != null) {
             builder.append(Program.formatString(
-                    resources.getString(R.string.seat_announcement_format),
+                    getString(R.string.seat_announcement_format),
                     seatId,
                     oldUser.getName(),
-                    resources.getString(R.string.seat_out)));
+                    getString(R.string.seat_out)));
         }
         if (newUser != null) {
             builder.append(Program.formatString(
-                    resources.getString(R.string.seat_announcement_format),
+                    getString(R.string.seat_announcement_format),
                     seatId,
                     newUser.getName(),
-                    resources.getString(R.string.seat_in)));
+                    getString(R.string.seat_in)));
         }
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle(resources.getString(R.string.note));
+        dialog.setTitle(R.string.note);
         dialog.setMessage(builder.toString());
         dialog.setNegativeButton(R.string.cancel, null);
         dialog.setPositiveButton(R.string.accept, (dialogInterface, index) -> updateSeat(seatId, userId));
-
         dialog.show();
     }
 
     // 着座する利用者を選択する.
     private void chooseUser(int seatId) {
-        Resources resources = getResources();
+        User[] users = this.users.get();
+        int[] userIds = new int[users.length];
+        String[] userNames = new String[users.length];
+
+        for (int index = 0; index < users.length; index++) {
+            userIds[index] = users[index].getId();
+            userNames[index] = users[index].getName();
+        }
+
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle(resources.getString(R.string.seat_in));
-        dialog.setNegativeButton(resources.getString(R.string.cancel), null);
-        dialog.setItems(users.getNames(), (dialogInterface, selectedIndex) -> {
-            User selectedUser = users.get(selectedIndex);
-            int userId = (selectedUser != null) ? selectedUser.getId() : 0;
-            announceSeat(seatId, userId);
-        });
+        dialog.setTitle(getString(R.string.seat_in));
+        dialog.setNegativeButton(getString(R.string.cancel), null);
+        dialog.setItems(userNames, (dialogInterface, selectedIndex) -> announceSeat(seatId, userIds[selectedIndex]));
         dialog.show();
+    }
+
+    private void closeUsers() {
+        try {
+            if (users != null) {
+                users.close();
+                users = null;
+            }
+        }
+        catch (Exception exception) {
+            Program.showAlert(this, exception);
+        }
     }
 
     private Button findButtonById(int id) {
@@ -77,14 +93,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return (view instanceof Button) ? (Button)view : null;
     }
 
-    // Activity を復元する.
-    private void loadInstance(Bundle input) {
-        users.loadInstance(input);
-    }
-
-    private void loadUsers() {
+    private void initializeUsers() {
         try {
-            users.loadDemo(getResources());
+            users = new DemoUsers(this);
         }
         catch (Exception exception) {
             showAlert(exception);
@@ -111,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        loadUsers();
+        initializeUsers();
         updateSeatButtons();
         updateRoom();
         findViewById(R.id.reset_button).setOnClickListener(this);
@@ -139,13 +150,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        closeUsers();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == Program.ID.OPTIONS_MENU) {
+        Intent intent;
+
+        switch (item.getItemId()) {
+            case SETTINGS_MENU_ITEM:
+                intent = new Intent(getApplication(), SettingsActivity.class);
+                break;
+            case USERS_MENU_ITEM:
+                intent = new Intent(getApplication(), UsersActivity.class);
+                break;
+            default:
+                intent = null;
+                break;
+        }
+        if (intent != null) {
+            startActivity(intent);
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -162,7 +189,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        loadInstance(savedInstanceState);
         updateSeatButtons();
     }
 
@@ -175,7 +201,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        saveInstance(outState);
     }
 
     // 座席ボタンを押した場合に呼び出される.
@@ -218,11 +243,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    // Activity を保存する.
-    private void saveInstance(Bundle output) {
-        users.saveInstance(output);
-    }
-
     // 指定した例外を説明するダイアログを表示する.
     private void showAlert(Exception exception) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
@@ -257,9 +277,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (oldUser != null) {
             oldUser.setSeat(0);
+            users.set(oldUser);
         }
         if (newUser != null) {
             newUser.setSeat(seatId);
+            users.set(newUser);
         }
 
         updateSeatButton(seatId, userId);

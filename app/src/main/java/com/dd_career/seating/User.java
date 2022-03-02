@@ -4,6 +4,8 @@ import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,10 +15,14 @@ public class User {
     public static final String ELEMENT = "user";
     public static final String FORMAT = "User_%s_%d";
     public static final String ID = "id";
+    public static final int ID_DEFAULT_VALUE = 0;
     public static final String NAME = "name";
+    public static final String NAME_DEFAULT_VALUE = null;
     public static final String NAMESPACE = null;
     public static final String SEAT = "seat";
+    public static final int SEAT_DEFAULT_VALUE = 0;
     public static final String VISIBLE = "visible";
+    public static final boolean VISIBLE_DEFAULT_VALUE = true;
 
     // 利用者一意識別子.
     private int id;
@@ -32,10 +38,20 @@ public class User {
 
     // 既定値で初期化する.
     public User() {
-        id = 0;
-        name = null;
-        seat = 0;
-        visible = true;
+        id = ID_DEFAULT_VALUE;
+        name = NAME_DEFAULT_VALUE;
+        seat = SEAT_DEFAULT_VALUE;
+        visible = VISIBLE_DEFAULT_VALUE;
+    }
+
+    @NonNull
+    public User clone() {
+        User value = new User();
+        value.id = id;
+        value.name = name;
+        value.seat = seat;
+        value.visible = visible;
+        return value;
     }
 
     public int getId() {
