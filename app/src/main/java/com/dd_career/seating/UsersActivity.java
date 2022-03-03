@@ -13,7 +13,7 @@ import java.util.List;
 
 public class UsersActivity extends AppCompatActivity implements View.OnClickListener {
     private List<Button> buttons;
-    private Users users;
+    private List<User> users;
 
     public UsersActivity() {
          buttons = new ArrayList<>();
@@ -30,7 +30,12 @@ public class UsersActivity extends AppCompatActivity implements View.OnClickList
 
     private void initializeUsers() {
         try {
-            users = Users.create(this);
+            Users created = Users.create(this);
+            users = new ArrayList<>();
+
+            for (User user : created.get()) {
+                users.add(user);
+            }
         }
         catch (Exception exception) {
             Program.showAlert(this, exception);
@@ -41,11 +46,14 @@ public class UsersActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         for (int index = 0; index < buttons.size(); index++) {
             if (view == buttons.get(index)) {
+                User user = users.get(index);
+                UserDialog dialog = new UserDialog(this);
+                dialog.setUser(user);
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(R.string.user);
-                builder.setView(getLayoutInflater().inflate(R.layout.dialog_user, null));
+                builder.setView(dialog.getView());
                 builder.setNegativeButton(R.string.cancel, null);
-                builder.setPositiveButton(R.string.apply, null);
+                builder.setPositiveButton(R.string.apply, (dialogInterface, value) -> {});
                 builder.show();
             }
         }
@@ -65,7 +73,7 @@ public class UsersActivity extends AppCompatActivity implements View.OnClickList
         if (view instanceof LinearLayout) {
             LinearLayout layout = (LinearLayout)view;
 
-            for (User user : users.get()) {
+            for (User user : users) {
                 layout.addView(createItem(user));
             }
         }

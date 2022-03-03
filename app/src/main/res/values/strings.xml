@@ -88,9 +88,13 @@
     <string name="update">更新</string>
     <string name="user">利用者</string>
     <string name="user_id">User ID</string>
+    <string name="user_id_prompt">User ID:</string>
     <string name="user_name">User Name</string>
+    <string name="user_name_prompt">User Name:</string>
     <string name="user_seat">User Seat</string>
+    <string name="user_seat_prompt">User Seat:</string>
     <string name="user_visible">User Visible</string>
+    <string name="user_visible_prompt">User Visible:</string>
     <string name="users">利用者</string>
     <string name="yes">はい</string>
     <string name="title_activity_users">UsersActivity</string>

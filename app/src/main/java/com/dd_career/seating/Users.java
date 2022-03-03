@@ -17,6 +17,10 @@ import java.util.List;
 import java.util.Map;
 
 // 利用者情報使用方法を提供する.
+// 利用者情報使用時の困難を解決するために縛りを設ける.
+// 各利用者 ID 間に欠落がないこと.
+// 各利用者 ID は配列の添え字に対応すること.
+// 利用者 ID ゼロを使用しないこと.
 public class Users implements Closeable {
     private final List<User> users;
 
