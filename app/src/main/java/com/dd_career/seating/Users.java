@@ -12,16 +12,23 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 // 利用者情報使用方法を提供する.
+// 利用者情報提供元に応じて特殊化する.
 // 利用者情報使用時の困難を解決するために縛りを設ける.
+// コレクション項目の順序が保障されること.
 // 各利用者 ID 間に欠落がないこと.
 // 各利用者 ID は配列の添え字に対応すること.
-// 利用者 ID ゼロを使用しないこと.
 public class Users implements Closeable {
+    public static final int INVALID = -1;
+    public static final int INVISIBLE = 4; // 不可視.
+    public static final int SEATED = 3; // 着席済み.
+    public static final int UNSEATED = 2; // 離席済み.
+    public static final int VISIBLE = 1; // 可視.
     private final List<User> users;
 
     // 既定値で初期化する.
@@ -43,22 +50,16 @@ public class Users implements Closeable {
     }
 
     // 利用者識別子で検索する.
-    // 指定した利用者識別子の利用者または null を返す.
+    // 指定した利用者識別子の利用者を返す.
     public User findById(int id) {
-        for (User user : users) {
-            if (user.getId() == id) {
-                return user;
-            }
-        }
-
-        return null;
+        return ((0 <= id) && (id < users.size())) ? users.get(id) : null;
     }
 
     // 座席識別子で検索する.
     // 指定した座席識別子の利用者または null を返す.
     public User findBySeat(int seat) {
         for (User user : users) {
-            if (user.getSeat() == seat) {
+            if ((user != null) && (user.getSeat() == seat)) {
                 return user;
             }
         }
@@ -73,17 +74,61 @@ public class Users implements Closeable {
         return result;
     }
 
-    // コレクションに要素を追加する.
-    public void set(User user) {
-        for (int index = 0; index < users.size(); index++) {
-            User target = users.get(index);
+    public User[] select(int filter) {
+        return select(get(), filter);
+    }
 
-            if (target.getId() == user.getId()) {
-                users.set(index, user);
-            }
+    public static User[] select(User[] users, int filter) {
+        List<User> buffer = new ArrayList<>();
+
+        switch (filter) {
+            case INVISIBLE:
+                for (User user : users) {
+                    if ((user != null) && (!user.getVisible())) {
+                        buffer.add(user);
+                    }
+                }
+                break;
+            case SEATED:
+                for (User user : users) {
+                    if ((user != null) && (INVALID < user.getSeat())) {
+                        buffer.add(user);
+                    }
+                }
+                break;
+            case UNSEATED:
+                for (User user : users) {
+                    if ((user != null) && (user.getSeat() <= INVALID)) {
+                        buffer.add(user);
+                    }
+                }
+                break;
+            case VISIBLE:
+                for (User user : users) {
+                    if ((user != null) && (user.getVisible())) {
+                        buffer.add(user);
+                    }
+                }
+                break;
+            default:
+                Collections.addAll(buffer, users);
+                break;
         }
 
-        users.add(user);
+        User[] result = new User[buffer.size()];
+        buffer.toArray(result);
+        return result;
+    }
+
+    // コレクションに要素を追加する.
+    public void set(User user) {
+        int id = user.getId();
+
+        while (users.size() <= id) {
+            users.add(null);
+        }
+
+        users.set(id, user);
     }
 
     // コレクションの大きさを取得する.
@@ -91,6 +136,9 @@ public class Users implements Closeable {
         return users.size();
     }
 
-    public void Update() {
+    public void update() {
+    }
+
+    public void update(String source) {
     }
 }

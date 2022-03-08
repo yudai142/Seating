@@ -20,7 +20,7 @@ public class User {
     public static final String NAME_DEFAULT_VALUE = null;
     public static final String NAMESPACE = null;
     public static final String SEAT = "seat";
-    public static final int SEAT_DEFAULT_VALUE = 0;
+    public static final int SEAT_DEFAULT_VALUE = -1;
     public static final String VISIBLE = "visible";
     public static final boolean VISIBLE_DEFAULT_VALUE = true;
 
@@ -38,10 +38,14 @@ public class User {
 
     // 既定値で初期化する.
     public User() {
-        id = ID_DEFAULT_VALUE;
-        name = NAME_DEFAULT_VALUE;
-        seat = SEAT_DEFAULT_VALUE;
-        visible = VISIBLE_DEFAULT_VALUE;
+        this(ID_DEFAULT_VALUE);
+    }
+
+    public User(int id) {
+        this.id = id;
+        this.name = NAME_DEFAULT_VALUE;
+        this.seat = SEAT_DEFAULT_VALUE;
+        this.visible = VISIBLE_DEFAULT_VALUE;
     }
 
     @NonNull

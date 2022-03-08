@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 動作確認用利用者名簿 -->
 <users>
+    <user id="0" name="欠番" />
     <user id="1" name="H. 水素" />
     <user id="2" name="He. ヘリウム" />
     <user id="3" name="Li. リチウム" />

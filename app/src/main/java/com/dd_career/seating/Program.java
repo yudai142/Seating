@@ -2,11 +2,15 @@ package com.dd_career.seating;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.View;
 
 import java.util.Locale;
 
 public final class Program {
+    private static final String GOOGLE_SCRIPT_URL_KEY = "google_script_url";
+
     public static final class ID {
         public static final int OPTIONS_MENU_ITEM = R.id.options_menu_item;
         public static final int RESET_BUTTON = R.id.reset_button;
@@ -43,6 +47,11 @@ public final class Program {
 
     public static String formatString(String format, Object... args) {
         return String.format(LOCALE, format, args);
+    }
+
+    public static String getGoogleScriptUrl(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return (preferences != null) ? preferences.getString(GOOGLE_SCRIPT_URL_KEY, null) : null;
     }
 
     public static int getSeatButtonId(int index) {

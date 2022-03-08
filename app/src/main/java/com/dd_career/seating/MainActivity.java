@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import java.util.Date;
 
 // アプリケーションのメイン エントリ ポイント.
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final int INVALID = -1;
     private static final int SEAT_MAX_ID = 23; // 最大座席番号.
     private static final int SEAT_MIN_ID = 1; // 最小座席番号.
     private static final int SETTINGS_MENU_ITEM = R.id.settings_menu_item;
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 reset();
                 break;
             case Program.ID.UPDATE_BUTTON:
-                updateLatestTimeText();
+                update();
                 break;
             default:
                 onSeatButtonClick(sender);
@@ -209,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         User seatUser = users.findBySeat(seatId);
 
         if (seatUser != null) {
-            announceSeat(seatId, 0);
+            announceSeat(seatId, INVALID);
         }
         else {
             chooseUser(seatId);
@@ -251,6 +253,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dialog.show();
     }
 
+    private void update() {
+        String source = Program.getGoogleScriptUrl(this);
+        Toast.makeText(this, source, Toast.LENGTH_LONG).show();
+    }
+
     private void updateLatestTimeText() {
         View view = findViewById(R.id.latest_time_text);
 
@@ -285,6 +292,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         updateSeatButton(seatId, userId);
+
+        SeatRecord record = new SeatRecord();
+        record.setSeat(seatId);
+        record.setStatus(SeatRecord.TAKE);
+        record.setUser(userId);
+        record.save(this);
     }
 
     // 座席ボタン表示を更新する.
@@ -319,7 +332,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void updateSeatButtons() {
         for (int seatId = SEAT_MIN_ID; seatId <= SEAT_MAX_ID; seatId++) {
             User user = users.findBySeat(seatId);
-            int userId = (user != null) ? user.getId() : 0;
+            int userId = (user != null) ? user.getId() : INVALID;
             updateSeatButton(seatId, userId);
         }
     }
