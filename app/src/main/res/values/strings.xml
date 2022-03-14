@@ -76,11 +76,13 @@
     <string name="options">オプション</string>
     <string name="private_room">個室</string>
     <string name="records">履歴</string>
+    <string name="records_sheet_gas_url_title">記録表 Google Apps Script URL</string>
     <string name="reset">リセット</string>
     <string name="seat_announcement_format">%2$s は座席 %1$d を %3$s します。</string>
     <string name="seat_button_text_format">%d: %s</string>
     <string name="seat_in">着席</string>
     <string name="seat_out">離席</string>
+    <string name="seats_sheet_gas_url_title">座席表 Google Apps Script URL</string>
     <string name="settings">設定</string>
     <string name="table_1">机 1</string>
     <string name="table_2">机 2</string>
@@ -98,6 +100,7 @@
     <string name="user_name_prompt">User Name:</string>
     <string name="user_seat">User Seat</string>
     <string name="user_seat_prompt">User Seat:</string>
+    <string name="users_sheet_gas_url_title">受講者 Google Apps Script URL</string>
     <string name="user_visible">User Visible</string>
     <string name="user_visible_prompt">User Visible:</string>
     <string name="users">利用者</string>

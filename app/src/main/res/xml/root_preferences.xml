@@ -3,13 +3,18 @@
     <PreferenceCategory app:title="@string/network_header">
 
         <EditTextPreference
-            app:key="google_script_url"
-            app:title="@string/google_script_url_title"
+            app:key="records_sheet_gas_url"
+            app:title="@string/records_sheet_gas_url_title"
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
-            app:key="google_spreadsheets_url"
-            app:title="@string/google_spreadsheets_url"
+            app:key="seats_sheet_gas_url"
+            app:title="@string/seats_sheet_gas_url_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="users_sheet_gas_url"
+            app:title="@string/users_sheet_gas_url_title"
             app:useSimpleSummaryProvider="true" />
 
         <!--
