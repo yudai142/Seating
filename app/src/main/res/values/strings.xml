@@ -57,12 +57,15 @@
     <string name="button_49">Button 49</string>
     <string name="button_50">Button 50</string>
     <string name="cancel">キャンセル</string>
+    <string name="checkout_menu_item">チェックアウト</string>
+    <string name="commit_menu_item">コミット</string>
     <string name="copyright">Copyright © 2022 Taichi Murakami.</string>
     <string name="current_time">現在時刻: </string>
     <string name="date_format">yyyymmddthhmmss</string>
     <string name="empty_seat">(空席)</string>
     <string name="empty_value">1234567890</string>
     <string name="error">エラー</string>
+    <string name="google_apps_script_url_title">Google Apps Script URL (例: https://script.google.com/macros/s/***/exec)</string>
     <string name="google_script_url_title">Google Script URL (例: https://script.google.com/macros/s/***/exec)</string>
     <string name="google_sheet_name_title">Google スプレッドシート名 (例: https://docs.google.com/spreadsheets/d/(スプレッドシート名)/edit?usp=sharing)</string>
     <string name="google_spreadsheets_url">Google Spreadsheets URL (例: https://docs.google.com/spreadsheets/d/***/edit?usp=sharing)</string>
@@ -71,6 +74,8 @@
     <string name="list">一覧</string>
     <string name="logs">履歴</string>
     <string name="network_header">ネットワーク</string>
+    <string name="new_menu_item">新規</string>
+    <string name="new_user_menu_item">新規利用者</string>
     <string name="no">いいえ</string>
     <string name="note">注意</string>
     <string name="options">オプション</string>

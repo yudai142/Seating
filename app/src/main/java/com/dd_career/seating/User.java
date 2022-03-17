@@ -6,117 +6,93 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 // 利用者情報を格納する.
 public class User {
-    public static final String ELEMENT = "user";
-    public static final String FORMAT = "User_%s_%d";
-    public static final String ID = "id";
-    public static final int ID_DEFAULT_VALUE = 0;
-    public static final String NAME = "name";
-    public static final String NAME_DEFAULT_VALUE = null;
-    public static final String NAMESPACE = null;
-    public static final String SEAT = "seat";
-    public static final int SEAT_DEFAULT_VALUE = -1;
-    public static final String VISIBLE = "visible";
-    public static final boolean VISIBLE_DEFAULT_VALUE = true;
-
-    // 利用者一意識別子.
-    private int id;
-
-    // 利用者名.
-    private String name;
-
-    // 着座した座席識別子またはゼロ.
-    private int seat;
-
-    // 着座可能である場合は true. 着席不能である場合は false.
-    private boolean visible;
-
-    // 既定値で初期化する.
-    public User() {
-        this(ID_DEFAULT_VALUE);
+    public final class BundleKey {
+        public static final String FLAGS = "User_Flags_%d";
+        public static final String ID = "User_Id_%d";
+        public static final String NAME = "User_Name_%d";
+        private BundleKey() {}
+    }
+    public final class DemoKey {
+        public static final String ID = "id";
+        public static final String NAME = "name";
+        private DemoKey() {}
+    }
+    public final class Flag {
+        public static final int VISIBLE = 1;
+        private Flag() {}
+    }
+    public final class GasKey {
+        public static final String FLAGS = "status";
+        public static final String ID = "studentNumber";
+        public static final String NAME = "studentName";
+        private GasKey() {}
     }
 
-    public User(int id) {
-        this.id = id;
-        this.name = NAME_DEFAULT_VALUE;
-        this.seat = SEAT_DEFAULT_VALUE;
-        this.visible = VISIBLE_DEFAULT_VALUE;
+    private static final String NAMESPACE = null;
+    private int flags;
+    private int id;
+    private String name;
+
+    public User() {
+        flags = Flag.VISIBLE;
+        id = -1;
+        name = null;
+    }
+
+    public User(JSONObject object) throws JSONException {
+        flags = object.getInt(GasKey.FLAGS);
+        id = object.getInt(GasKey.ID);
+        name = object.getString(GasKey.NAME);
+    }
+
+    public User(XmlResourceParser parser) {
+        super();
+        id = Integer.parseInt(parser.getAttributeValue(NAMESPACE, DemoKey.ID));
+        name = parser.getAttributeValue(NAMESPACE, DemoKey.NAME);
+    }
+
+    public User(int index, Bundle input) {
+        super();
+        Locale locale = Locale.ENGLISH;
+        flags = input.getInt(String.format(locale, BundleKey.FLAGS, index), flags);
+        id = input.getInt(String.format(locale, BundleKey.ID, index), id);
+        name = input.getString(String.format(locale, BundleKey.NAME, index), name);
     }
 
     @NonNull
     public User clone() {
         User value = new User();
+        value.flags = flags;
         value.id = id;
         value.name = name;
-        value.seat = seat;
-        value.visible = visible;
         return value;
+    }
+
+    public int getFlags() {
+        return this.flags;
     }
 
     public int getId() {
         return this.id;
     }
 
-    private static String getIdKey(int index) {
-        return getKey(index, ID);
-    }
-
-    private static String getKey(int index, String name) {
-        return Program.formatString(FORMAT, name, index);
-    }
-
     public String getName() {
         return this.name;
     }
 
-    private static String getNameKey(int index) {
-        return getKey(index, NAME);
-    }
-
-    public int getSeat() {
-        return this.seat;
-    }
-
-    private static String getSeatKey(int index) {
-        return getKey(index, SEAT);
-    }
-
-    public boolean getVisible() {
-        return this.visible;
-    }
-
-    private static String getVisibleKey(int index) {
-        return getKey(index, VISIBLE);
-    }
-
-    public boolean isValid() {
-        return (id != 0) && (name != null);
-    }
-
-    public void loadInstance(int index, Bundle input) {
-        id = input.getInt(getIdKey(index));
-        name = input.getString(getNameKey(index));
-        seat = input.getInt(getSeatKey(index));
-        visible = input.getBoolean(getVisibleKey(index));
-    }
-
-    public void loadXml(XmlResourceParser parser) {
-        id = Integer.parseInt(parser.getAttributeValue(NAMESPACE, ID));
-        name = parser.getAttributeValue(NAMESPACE, NAME);
-        seat = 0;
-        visible = true;
-    }
-
-    public void saveInstance(int index, Bundle output) {
-        output.putInt(getIdKey(index), getId());
-        output.putString(getNameKey(index), getName());
-        output.putInt(getSeatKey(index), getSeat());
-        output.putBoolean(getVisibleKey(index), getVisible());
+    public void setFlags(int flags) {
+        this.flags = flags;
     }
 
     public void setId(int id) {
@@ -127,11 +103,24 @@ public class User {
         this.name = name;
     }
 
-    public void setSeat(int seat) {
-        this.seat = seat;
+    public void toBundle(int index, Bundle output) {
+        Locale locale = Locale.ENGLISH;
+        output.putInt(String.format(locale, BundleKey.FLAGS, index), flags);
+        output.putInt(String.format(locale, BundleKey.ID, index), id);
+        output.putString(String.format(locale, BundleKey.NAME, index), name);
     }
 
-    public void setVisible(boolean visible) {
-        this.visible = visible;
+    public JSONArray toJsonArray() throws JSONException {
+        JSONArray array = new JSONArray();
+        array.put(toJsonObject());
+        return array;
+    }
+
+    public JSONObject toJsonObject() throws JSONException {
+        JSONObject object = new JSONObject();
+        object.put(GasKey.FLAGS, getFlags());
+        object.put(GasKey.ID, getId());
+        object.put(GasKey.NAME, getName());
+        return object;
     }
 }

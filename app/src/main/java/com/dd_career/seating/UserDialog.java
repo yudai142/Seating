@@ -38,8 +38,6 @@ public class UserDialog {
         User user = new User();
         user.setId(getUserId());
         user.setName(getUserName());
-        user.setSeat(getUserSeat());
-        user.setVisible(getUserVisible());
         return user;
     }
 
@@ -70,8 +68,6 @@ public class UserDialog {
     public void setUser(User user) {
         setUserId(user.getId());
         setUserName(user.getName());
-        setUserSeat(user.getSeat());
-        setUserVisible(user.getVisible());
     }
 
     private void setUserId(int id) {

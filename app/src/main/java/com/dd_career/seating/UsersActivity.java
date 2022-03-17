@@ -1,107 +1,134 @@
 package com.dd_career.seating;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 // 利用者一覧画面を表す.
-public class UsersActivity extends AppCompatActivity implements View.OnClickListener {
+public class UsersActivity extends Activity implements View.OnClickListener {
+    private static final int CHECKOUT_MENU_ITEM = R.id.checkout_menu_item;
+    private static final int COMMIT_MENU_ITEM = R.id.commit_menu_item;
     private static final int INVALID_INDEX = -1;
+    private static final int NEW_MENU_ITEM = R.id.new_menu_item;
+    private static final String BUTTON_TEXT_FORMAT = "%d: %s";
     private List<Button> buttons;
-    private Users users;
+    private LinearLayout usersLinearLayout;
 
     public UsersActivity() {
          buttons = new ArrayList<>();
     }
 
-    private View createItem(User user) {
-        Button button = new Button(this);
-        button.setOnClickListener(this);
-        button.setBackgroundColor(getResources().getColor(R.color.white));
-        button.setText(user.getName());
-        buttons.add(button);
-        return button;
+    private void applyUser(User user) {
+        getUsers().set(user);
+        updateButtons();
     }
 
     private int findButton(View target) {
+        int result = INVALID_INDEX;
+
         for (int index = 0; index < buttons.size(); index++) {
             Button button = buttons.get(index);
 
             if (button == target) {
-                return index;
+                result = index;
+                break;
             }
         }
 
-        return INVALID_INDEX;
+        return result;
     }
 
-    private void initializeUsers() {
-        try {
-            users = Users.create(this);
-        }
-        catch (Exception exception) {
-            Program.showAlert(this, exception);
-        }
+    private void newUser() {
+    }
+
+    @Override
+    protected void onCheckoutUsers(JSONArray response) {
+        super.onCheckoutUsers(response);
+        updateButtons();
     }
 
     // クリックしたボタンに対応する利用者を編集または新規作成する.
     @Override
     public void onClick(View view) {
         int id = findButton(view);
-        User user = users.findById(id);
-        if (user == null) user = new User(id);
-        UserDialog dialog = new UserDialog(this);
-        dialog.setUser(user);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.user);
-        builder.setView(dialog.getView());
-        builder.setNegativeButton(R.string.cancel, null);
-        builder.setPositiveButton(R.string.apply, (dialogInterface, value) -> updateUser(dialog.getUser()));
-        builder.show();
+        User user = getUsers().findById(id);
+
+        if (user != null) {
+            UserDialog dialog = new UserDialog(this);
+            dialog.setUser(user);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.user);
+            builder.setView(dialog.getView());
+            builder.setNegativeButton(R.string.cancel, null);
+            builder.setPositiveButton(R.string.apply, (dialogInterface, value) -> applyUser(dialog.getUser()));
+            builder.show();
+        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
-        initializeUsers();
-        updateUsers();
+        usersLinearLayout = findViewById(R.id.users_linear_layout);
+        updateButtons();
     }
 
-    private void updateUser(User user) {
-        users.set(user);
-        updateUsers();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_users, menu);
+        return true;
     }
 
-    private void updateUsers() {
-        View view = findViewById(R.id.users_linear_layout);
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case CHECKOUT_MENU_ITEM:
+                checkoutUsers();
+                return true;
+            case COMMIT_MENU_ITEM:
+                commitUsers();
+                return true;
+            case NEW_MENU_ITEM:
+                newUser();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void updateButtons() {
+        Users users = getUsers();
         int size = users.size();
+        buttons.clear();
+        usersLinearLayout.removeAllViews();
 
-        if (view instanceof LinearLayout) {
-            LinearLayout layout = (LinearLayout)view;
-
-            while (buttons.size() <= size) {
-                Button button = new Button(this);
-                button.setBackgroundColor(getResources().getColor(R.color.empty_seat));
-                button.setOnClickListener(this);
-                button.setTextColor(getResources().getColor(R.color.black));
-                buttons.add(button);
-                layout.addView(button);
-            }
+        while (buttons.size() < size) {
+            Button button = new Button(this);
+            button.setBackgroundColor(getResources().getColor(R.color.white));
+            button.setOnClickListener(this);
+            button.setTextColor(getResources().getColor(R.color.black));
+            buttons.add(button);
+            usersLinearLayout.addView(button);
         }
-        for (int id = 0; id < size; id++) {
-            Button button = buttons.get(id);
-            User user = users.findById(id);
-            button.setText(user.getName());
+        for (int index = 0; index < size; index++) {
+            Button button = buttons.get(index);
+            User user = users.get(index);
+            button.setText(String.format(Locale.ENGLISH, BUTTON_TEXT_FORMAT, user.getId(), user.getName()));
         }
-
-        buttons.get(size).setText(R.string.add_new);
     }
 }

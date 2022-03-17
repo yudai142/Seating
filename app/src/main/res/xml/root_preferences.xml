@@ -3,6 +3,12 @@
     <PreferenceCategory app:title="@string/network_header">
 
         <EditTextPreference
+            app:key="google_apps_script_url"
+            app:title="@string/google_apps_script_url_title"
+            app:useSimpleSummaryProvider="true"
+            />
+
+        <EditTextPreference
             app:key="records_sheet_gas_url"
             app:title="@string/records_sheet_gas_url_title"
             app:useSimpleSummaryProvider="true" />

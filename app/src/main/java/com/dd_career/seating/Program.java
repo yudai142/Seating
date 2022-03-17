@@ -112,6 +112,13 @@ public final class Program {
         }
     }
 
+    public static void showAlert(Context context, String text) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+        dialog.setMessage(text);
+        dialog.setTitle(context.getResources().getString(R.string.error));
+        dialog.show();
+    }
+
     // 指定した例外を説明するダイアログを表示する.
     public static void showAlert(Context context, Exception exception) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(context);
